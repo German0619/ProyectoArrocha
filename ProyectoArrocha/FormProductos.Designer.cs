@@ -41,7 +41,7 @@ namespace TuProyecto
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.flowPanelProductos = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -64,7 +64,7 @@ namespace TuProyecto
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtBuscar);
             this.panel1.Location = new System.Drawing.Point(2, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1018, 84);
@@ -173,15 +173,16 @@ namespace TuProyecto
             this.label3.TabIndex = 3;
             this.label3.Text = "ARROCHA";
             // 
-            // textBox1
+            // txtBuscar
             // 
-            this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox1.Location = new System.Drawing.Point(261, 33);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(294, 22);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "¿Qué estás buscando?";
+            this.txtBuscar.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtBuscar.Location = new System.Drawing.Point(261, 33);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(294, 22);
+            this.txtBuscar.TabIndex = 0;
+            this.txtBuscar.Text = "¿Qué estás buscando?";
+            this.txtBuscar.TextChanged += new System.EventHandler(this.FormProductos_Load);
             // 
             // flowPanelProductos
             // 
@@ -190,8 +191,6 @@ namespace TuProyecto
             this.flowPanelProductos.Name = "flowPanelProductos";
             this.flowPanelProductos.Size = new System.Drawing.Size(990, 400);
             this.flowPanelProductos.TabIndex = 8;
-            this.flowPanelProductos.WrapContents = true;
-            this.flowPanelProductos.FlowDirection = FlowDirection.LeftToRight;
             // 
             // FormProductos
             // 
@@ -226,7 +225,7 @@ namespace TuProyecto
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.FlowLayoutPanel flowPanelProductos;
     }
 }
