@@ -322,6 +322,7 @@
             this.pbcar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbcar.TabIndex = 6;
             this.pbcar.TabStop = false;
+            this.pbcar.Click += new System.EventHandler(this.pbcar_Click);
             // 
             // pbperf
             // 

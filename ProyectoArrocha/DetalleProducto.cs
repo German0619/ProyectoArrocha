@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace ProyectoArrocha
         private string nombre;
         private decimal precio;
         private Image imagen;
+        public string Correo;
+        public string Nombre;
         public DetalleProducto(string nombre, decimal precio, Image imagen)
         {
             InitializeComponent();
@@ -26,7 +29,34 @@ namespace ProyectoArrocha
 
         private void pbcar_Click(object sender, EventArgs e)
         {
+            using (MySqlConnection conn = DataBase.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT IdUsuario FROM Usuarios WHERE Correo = @Correo";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Correo", Correo);
+                    object result = cmd.ExecuteScalar();
 
+                    if (result == null)
+                    {
+                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    int idUsuario = Convert.ToInt32(result);
+
+                    Carrito carrito = new Carrito(idUsuario, Nombre);
+                    carrito.Owner = this;
+                    carrito.Show();
+                    this.Hide();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error al abrir el carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void DetalleProducto_Load(object sender, EventArgs e)

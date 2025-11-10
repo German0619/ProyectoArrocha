@@ -17,6 +17,7 @@ namespace ProyectoArrocha
 {
     public partial class Registro : Form
     {
+        private string Correo;
         public Registro()
         {
             InitializeComponent();
@@ -144,5 +145,38 @@ namespace ProyectoArrocha
             frm.Show();
             this.Hide();
         }
+
+        private void pbcar_Click(object sender, EventArgs e)
+        {          
+            using (MySqlConnection conn = DataBase.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT IdUsuario FROM Usuarios WHERE Correo = @Correo";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Correo", Correo);
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null)
+                    {
+                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    int idUsuario = Convert.ToInt32(result);
+
+                    Carrito carrito = new Carrito(idUsuario, lbnom.Text);
+                    carrito.Owner = this;
+                    carrito.Show();
+                    this.Hide();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error al abrir el carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
+    
 }
