@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ProyectoArrocha;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_ds4
+namespace ProyectoArrocha
 {
     public partial class CambiarContraseña : Form
     {
         private string CorreoUsuario;
-        public CambiarContraseña(string Correo)
+        public CambiarContraseña(string Correo, String Nombre)
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             CorreoUsuario = Correo;
 
             this.FormClosed += CambiarContraseña_FormClosed;
@@ -97,6 +99,11 @@ namespace Proyecto_ds4
                 this.Owner.Show();
             }
             this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

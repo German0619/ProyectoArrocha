@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_ds4
+
+namespace ProyectoArrocha
 {
     public partial class Perfil : Form
     {
@@ -30,7 +31,7 @@ namespace Proyecto_ds4
         }
         private void btedit_Click(object sender, EventArgs e)
         {
-            EditarCuenta editarCuenta = new EditarCuenta(Correo);
+            EditarCuenta editarCuenta = new EditarCuenta(Correo, lbnom.Text);
             editarCuenta.Owner = this;
             editarCuenta.Show();
             this.Hide();
@@ -38,10 +39,20 @@ namespace Proyecto_ds4
 
         private void btcamb_Click(object sender, EventArgs e)
         {
-            CambiarContraseña cambiarContraseña = new CambiarContraseña(Correo);
+            CambiarContraseña cambiarContraseña = new CambiarContraseña(Correo, lbnom.Text);
             cambiarContraseña.Owner = this;
             cambiarContraseña.Show();
             this.Hide();
+        }
+
+        private void pbperf_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void pbcar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using ProyectoArrocha;
+﻿using ProyectoArrocha;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace Proyecto_ds4
+namespace ProyectoArrocha
 {
     public partial class Registro : Form
     {

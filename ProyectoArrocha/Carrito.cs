@@ -1,18 +1,20 @@
-﻿using System;
+﻿using ProyectoArrocha;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Proyecto_ds4
+namespace ProyectoArrocha
 {
     public partial class Carrito : Form
     {
         private int IdUsuario;
         private int IdCarrito;
 
-        public Carrito(int idUsuario)
+        public Carrito(int idUsuario, String Nombre)
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             IdUsuario = idUsuario;
             CargarCarrito();
         }

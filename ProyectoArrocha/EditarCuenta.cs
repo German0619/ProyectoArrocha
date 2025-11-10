@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ProyectoArrocha;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,14 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_ds4
+namespace ProyectoArrocha
 {
     public partial class EditarCuenta : Form
     {
         private string CorreoUsuario;
-        public EditarCuenta(string correo)
+        public EditarCuenta(string correo, String Nombre)
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             CorreoUsuario = correo;
             CargarDatosUsuario();
 

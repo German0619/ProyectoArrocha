@@ -1,4 +1,4 @@
-﻿namespace Proyecto_ds4
+﻿namespace ProyectoArrocha
 {
     partial class Login
     {
@@ -38,7 +38,7 @@
             this.tbcorreo = new System.Windows.Forms.TextBox();
             this.lbing = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbcarrito = new System.Windows.Forms.PictureBox();
+            this.pbcar = new System.Windows.Forms.PictureBox();
             this.pbperf = new System.Windows.Forms.PictureBox();
             this.lbperf = new System.Windows.Forms.Label();
             this.pbham = new System.Windows.Forms.PictureBox();
@@ -49,7 +49,7 @@
             this.lblogo = new System.Windows.Forms.Label();
             this.tbbusq = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbcarrito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbcar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbperf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pblogo)).BeginInit();
@@ -140,7 +140,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Controls.Add(this.pbcarrito);
+            this.panel1.Controls.Add(this.pbcar);
             this.panel1.Controls.Add(this.pbperf);
             this.panel1.Controls.Add(this.lbperf);
             this.panel1.Controls.Add(this.pbham);
@@ -154,18 +154,18 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1032, 84);
-            this.panel1.TabIndex = 16;
+            this.panel1.TabIndex = 25;
             // 
-            // pbcarrito
+            // pbcar
             // 
-            this.pbcarrito.Image = ((System.Drawing.Image)(resources.GetObject("pbcarrito.Image")));
-            this.pbcarrito.Location = new System.Drawing.Point(963, 23);
-            this.pbcarrito.Margin = new System.Windows.Forms.Padding(4);
-            this.pbcarrito.Name = "pbcarrito";
-            this.pbcarrito.Size = new System.Drawing.Size(41, 40);
-            this.pbcarrito.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbcarrito.TabIndex = 6;
-            this.pbcarrito.TabStop = false;
+            this.pbcar.Image = ((System.Drawing.Image)(resources.GetObject("pbcar.Image")));
+            this.pbcar.Location = new System.Drawing.Point(963, 23);
+            this.pbcar.Margin = new System.Windows.Forms.Padding(4);
+            this.pbcar.Name = "pbcar";
+            this.pbcar.Size = new System.Drawing.Size(41, 40);
+            this.pbcar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbcar.TabIndex = 6;
+            this.pbcar.TabStop = false;
             // 
             // pbperf
             // 
@@ -185,9 +185,8 @@
             this.lbperf.Location = new System.Drawing.Point(868, 36);
             this.lbperf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbperf.Name = "lbperf";
-            this.lbperf.Size = new System.Drawing.Size(69, 18);
+            this.lbperf.Size = new System.Drawing.Size(0, 18);
             this.lbperf.TabIndex = 2;
-            this.lbperf.Text = "Ingresar";
             // 
             // pbham
             // 
@@ -275,6 +274,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1032, 503);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbreg);
             this.Controls.Add(this.lbolv);
             this.Controls.Add(this.btis);
@@ -283,13 +283,12 @@
             this.Controls.Add(this.lbcorreo);
             this.Controls.Add(this.tbcorreo);
             this.Controls.Add(this.lbing);
-            this.Controls.Add(this.panel1);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbcarrito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbcar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbperf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pblogo)).EndInit();
@@ -311,7 +310,7 @@
         private System.Windows.Forms.TextBox tbcorreo;
         private System.Windows.Forms.Label lbing;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pbcarrito;
+        private System.Windows.Forms.PictureBox pbcar;
         private System.Windows.Forms.PictureBox pbperf;
         private System.Windows.Forms.Label lbperf;
         private System.Windows.Forms.PictureBox pbham;
