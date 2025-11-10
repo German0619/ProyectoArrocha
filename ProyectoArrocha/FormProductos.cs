@@ -1,5 +1,6 @@
 ﻿using ProyectoArrocha;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -9,6 +10,7 @@ namespace TuProyecto
 {
     public partial class FormProductos : Form
     {
+        private List<ProductoCard> listaProductos = new List<ProductoCard>();
         public FormProductos()
         {
             InitializeComponent();
@@ -60,6 +62,21 @@ namespace TuProyecto
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar productos: " + ex.Message);
+            }
+
+        }
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtBuscar.Text.ToLower().Trim();
+
+            flowPanelProductos.Controls.Clear();
+
+            foreach (var card in listaProductos)
+            {
+                if (card.NombreProducto.ToLower().Contains(filtro))
+                {
+                    flowPanelProductos.Controls.Add(card);
+                }
             }
         }
     }
