@@ -42,7 +42,7 @@ namespace TuProyecto
             this.lbdeli = new System.Windows.Forms.Label();
             this.pbbusq = new System.Windows.Forms.PictureBox();
             this.lblogo = new System.Windows.Forms.Label();
-            this.tbbusq = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbperf)).BeginInit();
@@ -72,7 +72,7 @@ namespace TuProyecto
             this.panel1.Controls.Add(this.lbdeli);
             this.panel1.Controls.Add(this.pbbusq);
             this.panel1.Controls.Add(this.lblogo);
-            this.panel1.Controls.Add(this.tbbusq);
+            this.panel1.Controls.Add(this.txtBuscar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -181,15 +181,16 @@ namespace TuProyecto
             this.lblogo.TabIndex = 3;
             this.lblogo.Text = "ARROCHA";
             // 
-            // tbbusq
+            // txtBuscar
             // 
-            this.tbbusq.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tbbusq.Location = new System.Drawing.Point(261, 33);
-            this.tbbusq.Margin = new System.Windows.Forms.Padding(4);
-            this.tbbusq.Name = "tbbusq";
-            this.tbbusq.Size = new System.Drawing.Size(294, 22);
-            this.tbbusq.TabIndex = 0;
-            this.tbbusq.Text = "¿Qué estás buscando?";
+            this.txtBuscar.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtBuscar.Location = new System.Drawing.Point(261, 33);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(294, 22);
+            this.txtBuscar.TabIndex = 0;
+            this.txtBuscar.Text = "¿Qué estás buscando?";
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // FormProductos
             // 
@@ -224,7 +225,7 @@ namespace TuProyecto
         private Label lbdeli;
         private PictureBox pbbusq;
         private Label lblogo;
-        private TextBox tbbusq;
+        private TextBox txtBuscar;
     }
 }
 
