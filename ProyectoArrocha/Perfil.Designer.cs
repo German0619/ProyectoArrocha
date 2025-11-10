@@ -1,0 +1,316 @@
+﻿namespace Proyecto_ds4
+{
+    partial class Perfil
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Perfil));
+            this.btcamb = new System.Windows.Forms.Button();
+            this.pbcarrito = new System.Windows.Forms.PictureBox();
+            this.pbperf = new System.Windows.Forms.PictureBox();
+            this.lbperf = new System.Windows.Forms.Label();
+            this.pbham = new System.Windows.Forms.PictureBox();
+            this.pblogo = new System.Windows.Forms.PictureBox();
+            this.pbdeli = new System.Windows.Forms.PictureBox();
+            this.lbdeli = new System.Windows.Forms.Label();
+            this.pbbusq = new System.Windows.Forms.PictureBox();
+            this.btedit = new System.Windows.Forms.Button();
+            this.btlout = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblogo = new System.Windows.Forms.Label();
+            this.lbcorreo = new System.Windows.Forms.Label();
+            this.tbbusq = new System.Windows.Forms.TextBox();
+            this.lbnom = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pbcarrito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbperf)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbham)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pblogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbdeli)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbbusq)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btcamb
+            // 
+            this.btcamb.Location = new System.Drawing.Point(451, 381);
+            this.btcamb.Name = "btcamb";
+            this.btcamb.Size = new System.Drawing.Size(152, 32);
+            this.btcamb.TabIndex = 30;
+            this.btcamb.Text = "Cambiar contraseña";
+            this.btcamb.UseVisualStyleBackColor = true;
+            // 
+            // pbcarrito
+            // 
+            this.pbcarrito.Image = ((System.Drawing.Image)(resources.GetObject("pbcarrito.Image")));
+            this.pbcarrito.Location = new System.Drawing.Point(963, 23);
+            this.pbcarrito.Margin = new System.Windows.Forms.Padding(4);
+            this.pbcarrito.Name = "pbcarrito";
+            this.pbcarrito.Size = new System.Drawing.Size(41, 40);
+            this.pbcarrito.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbcarrito.TabIndex = 6;
+            this.pbcarrito.TabStop = false;
+            // 
+            // pbperf
+            // 
+            this.pbperf.Image = ((System.Drawing.Image)(resources.GetObject("pbperf.Image")));
+            this.pbperf.Location = new System.Drawing.Point(823, 27);
+            this.pbperf.Name = "pbperf";
+            this.pbperf.Size = new System.Drawing.Size(38, 35);
+            this.pbperf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbperf.TabIndex = 9;
+            this.pbperf.TabStop = false;
+            // 
+            // lbperf
+            // 
+            this.lbperf.AutoSize = true;
+            this.lbperf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbperf.Location = new System.Drawing.Point(868, 36);
+            this.lbperf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbperf.Name = "lbperf";
+            this.lbperf.Size = new System.Drawing.Size(69, 18);
+            this.lbperf.TabIndex = 2;
+            this.lbperf.Text = "Ingresar";
+            // 
+            // pbham
+            // 
+            this.pbham.Image = ((System.Drawing.Image)(resources.GetObject("pbham.Image")));
+            this.pbham.Location = new System.Drawing.Point(20, 21);
+            this.pbham.Margin = new System.Windows.Forms.Padding(4);
+            this.pbham.Name = "pbham";
+            this.pbham.Size = new System.Drawing.Size(37, 37);
+            this.pbham.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbham.TabIndex = 8;
+            this.pbham.TabStop = false;
+            // 
+            // pblogo
+            // 
+            this.pblogo.Image = ((System.Drawing.Image)(resources.GetObject("pblogo.Image")));
+            this.pblogo.Location = new System.Drawing.Point(77, 21);
+            this.pblogo.Margin = new System.Windows.Forms.Padding(4);
+            this.pblogo.Name = "pblogo";
+            this.pblogo.Size = new System.Drawing.Size(49, 43);
+            this.pblogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pblogo.TabIndex = 7;
+            this.pblogo.TabStop = false;
+            // 
+            // pbdeli
+            // 
+            this.pbdeli.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbdeli.Image = ((System.Drawing.Image)(resources.GetObject("pbdeli.Image")));
+            this.pbdeli.InitialImage = null;
+            this.pbdeli.Location = new System.Drawing.Point(606, 27);
+            this.pbdeli.Margin = new System.Windows.Forms.Padding(4);
+            this.pbdeli.Name = "pbdeli";
+            this.pbdeli.Size = new System.Drawing.Size(45, 37);
+            this.pbdeli.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbdeli.TabIndex = 1;
+            this.pbdeli.TabStop = false;
+            // 
+            // lbdeli
+            // 
+            this.lbdeli.AutoSize = true;
+            this.lbdeli.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdeli.Location = new System.Drawing.Point(659, 16);
+            this.lbdeli.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbdeli.Name = "lbdeli";
+            this.lbdeli.Size = new System.Drawing.Size(146, 54);
+            this.lbdeli.TabIndex = 1;
+            this.lbdeli.Text = "Delivery Recetario\r\n(507) 6815-1053\r\n(507) 6645-4943";
+            // 
+            // pbbusq
+            // 
+            this.pbbusq.Image = ((System.Drawing.Image)(resources.GetObject("pbbusq.Image")));
+            this.pbbusq.Location = new System.Drawing.Point(563, 31);
+            this.pbbusq.Margin = new System.Windows.Forms.Padding(4);
+            this.pbbusq.Name = "pbbusq";
+            this.pbbusq.Size = new System.Drawing.Size(31, 32);
+            this.pbbusq.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbbusq.TabIndex = 5;
+            this.pbbusq.TabStop = false;
+            // 
+            // btedit
+            // 
+            this.btedit.Location = new System.Drawing.Point(451, 343);
+            this.btedit.Name = "btedit";
+            this.btedit.Size = new System.Drawing.Size(152, 32);
+            this.btedit.TabIndex = 27;
+            this.btedit.Text = "Editar Cuenta";
+            this.btedit.UseVisualStyleBackColor = true;
+            // 
+            // btlout
+            // 
+            this.btlout.Location = new System.Drawing.Point(301, 343);
+            this.btlout.Name = "btlout";
+            this.btlout.Size = new System.Drawing.Size(75, 32);
+            this.btlout.TabIndex = 26;
+            this.btlout.Text = "Logout";
+            this.btlout.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(323, 287);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Correo:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(324, 245);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Nombre:";
+            // 
+            // lblogo
+            // 
+            this.lblogo.AutoSize = true;
+            this.lblogo.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblogo.Location = new System.Drawing.Point(134, 30);
+            this.lblogo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblogo.Name = "lblogo";
+            this.lblogo.Size = new System.Drawing.Size(98, 27);
+            this.lblogo.TabIndex = 3;
+            this.lblogo.Text = "ARROCHA";
+            // 
+            // lbcorreo
+            // 
+            this.lbcorreo.AutoSize = true;
+            this.lbcorreo.Location = new System.Drawing.Point(404, 290);
+            this.lbcorreo.Name = "lbcorreo";
+            this.lbcorreo.Size = new System.Drawing.Size(0, 16);
+            this.lbcorreo.TabIndex = 29;
+            // 
+            // tbbusq
+            // 
+            this.tbbusq.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.tbbusq.Location = new System.Drawing.Point(261, 33);
+            this.tbbusq.Margin = new System.Windows.Forms.Padding(4);
+            this.tbbusq.Name = "tbbusq";
+            this.tbbusq.Size = new System.Drawing.Size(294, 22);
+            this.tbbusq.TabIndex = 0;
+            this.tbbusq.Text = "¿Qué estás buscando?";
+            // 
+            // lbnom
+            // 
+            this.lbnom.AutoSize = true;
+            this.lbnom.Location = new System.Drawing.Point(404, 245);
+            this.lbnom.Name = "lbnom";
+            this.lbnom.Size = new System.Drawing.Size(0, 16);
+            this.lbnom.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(354, 160);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 38);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Mi cuenta";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.pbcarrito);
+            this.panel1.Controls.Add(this.pbperf);
+            this.panel1.Controls.Add(this.lbperf);
+            this.panel1.Controls.Add(this.pbham);
+            this.panel1.Controls.Add(this.pblogo);
+            this.panel1.Controls.Add(this.pbdeli);
+            this.panel1.Controls.Add(this.lbdeli);
+            this.panel1.Controls.Add(this.pbbusq);
+            this.panel1.Controls.Add(this.lblogo);
+            this.panel1.Controls.Add(this.tbbusq);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1032, 84);
+            this.panel1.TabIndex = 22;
+            // 
+            // Perfil
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1032, 435);
+            this.Controls.Add(this.btcamb);
+            this.Controls.Add(this.btedit);
+            this.Controls.Add(this.btlout);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbcorreo);
+            this.Controls.Add(this.lbnom);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.Name = "Perfil";
+            this.Text = "Perfil";
+            ((System.ComponentModel.ISupportInitialize)(this.pbcarrito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbperf)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pblogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbdeli)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbbusq)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btcamb;
+        private System.Windows.Forms.PictureBox pbcarrito;
+        private System.Windows.Forms.PictureBox pbperf;
+        private System.Windows.Forms.Label lbperf;
+        private System.Windows.Forms.PictureBox pbham;
+        private System.Windows.Forms.PictureBox pblogo;
+        private System.Windows.Forms.PictureBox pbdeli;
+        private System.Windows.Forms.Label lbdeli;
+        private System.Windows.Forms.PictureBox pbbusq;
+        private System.Windows.Forms.Button btedit;
+        private System.Windows.Forms.Button btlout;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblogo;
+        private System.Windows.Forms.Label lbcorreo;
+        private System.Windows.Forms.TextBox tbbusq;
+        private System.Windows.Forms.Label lbnom;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+    }
+}

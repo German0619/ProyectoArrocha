@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TuProyecto;
 
-namespace ProyectoArrocha
+namespace Proyecto_ds4
 {
     internal static class Program
     {
@@ -17,7 +16,7 @@ namespace ProyectoArrocha
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormProductos());
+            Application.Run(new Login());
         }
     }
 }

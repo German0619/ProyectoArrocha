@@ -1,0 +1,22 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Proyecto_ds4
+{
+    public class DataBase
+    {
+        private static string connectionString = "server=;Database=;Uid=;Pwd=;";
+
+        public static MySqlConnection GetConnection()
+        {
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            return conn;
+        }
+    }
+}
