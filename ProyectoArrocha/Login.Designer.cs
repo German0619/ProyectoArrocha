@@ -209,6 +209,7 @@
             this.pblogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pblogo.TabIndex = 7;
             this.pblogo.TabStop = false;
+            this.pblogo.Click += new System.EventHandler(this.pblogo_Click);
             // 
             // pbdeli
             // 
@@ -257,6 +258,7 @@
             this.lblogo.Size = new System.Drawing.Size(98, 27);
             this.lblogo.TabIndex = 3;
             this.lblogo.Text = "ARROCHA";
+            this.lblogo.Click += new System.EventHandler(this.lblogo_Click);
             // 
             // tbbusq
             // 

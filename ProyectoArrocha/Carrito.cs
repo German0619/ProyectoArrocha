@@ -1,8 +1,9 @@
-﻿using ProyectoArrocha;
+﻿using MySql.Data.MySqlClient;
+using ProyectoArrocha;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using TuProyecto;
 
 namespace ProyectoArrocha
 {
@@ -123,6 +124,20 @@ namespace ProyectoArrocha
             Perfil perfil = new Perfil("Usuario", "correo@ejemplo.com");
             perfil.Show();
             this.Close();
+        }
+
+        private void pblogo_Click(object sender, EventArgs e)
+        {
+            FormProductos frm = new FormProductos();
+            frm.Show();
+            this.Hide();
+        }
+
+        private void lblogo_Click(object sender, EventArgs e)
+        {
+            FormProductos frm = new FormProductos();
+            frm.Show();
+            this.Hide();
         }
     }
 }

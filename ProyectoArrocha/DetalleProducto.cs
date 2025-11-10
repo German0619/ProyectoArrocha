@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TuProyecto;
 
 namespace ProyectoArrocha
 {
@@ -47,6 +48,20 @@ namespace ProyectoArrocha
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pblogo_Click(object sender, EventArgs e)
+        {
+            FormProductos frm = new FormProductos();
+            frm.Show();
+            this.Hide();
+        }
+
+        private void lblogo_Click(object sender, EventArgs e)
+        {
+            FormProductos frm = new FormProductos();
+            frm.Show();
+            this.Hide();
         }
     }
 }
