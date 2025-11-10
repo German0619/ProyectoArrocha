@@ -61,12 +61,6 @@ namespace ProyectoArrocha
             registro.Show();
             this.Hide();
         }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void pblogo_Click(object sender, EventArgs e)
         {
             FormProductos frm = new FormProductos();
@@ -74,7 +68,6 @@ namespace ProyectoArrocha
             this.Hide();
 
         }
-
         private void lblogo_Click(object sender, EventArgs e)
         {
             FormProductos frm = new FormProductos();

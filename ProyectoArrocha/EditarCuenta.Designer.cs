@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarCuenta));
             this.btcancel = new System.Windows.Forms.Button();
-            this.btrealziar = new System.Windows.Forms.Button();
+            this.btrealizar = new System.Windows.Forms.Button();
             this.lbcel = new System.Windows.Forms.Label();
             this.tbcel = new System.Windows.Forms.TextBox();
             this.cbfem = new System.Windows.Forms.CheckBox();
@@ -69,15 +69,17 @@
             this.btcancel.TabIndex = 79;
             this.btcancel.Text = "Cancelar";
             this.btcancel.UseVisualStyleBackColor = true;
+            this.btcancel.Click += new System.EventHandler(this.btcancel_Click);
             // 
-            // btrealziar
+            // btrealizar
             // 
-            this.btrealziar.Location = new System.Drawing.Point(604, 412);
-            this.btrealziar.Name = "btrealziar";
-            this.btrealziar.Size = new System.Drawing.Size(166, 28);
-            this.btrealziar.TabIndex = 78;
-            this.btrealziar.Text = "Realizar cambio";
-            this.btrealziar.UseVisualStyleBackColor = true;
+            this.btrealizar.Location = new System.Drawing.Point(604, 412);
+            this.btrealizar.Name = "btrealizar";
+            this.btrealizar.Size = new System.Drawing.Size(166, 28);
+            this.btrealizar.TabIndex = 78;
+            this.btrealizar.Text = "Realizar cambio";
+            this.btrealizar.UseVisualStyleBackColor = true;
+            this.btrealizar.Click += new System.EventHandler(this.btrealizar_Click);
             // 
             // lbcel
             // 
@@ -111,6 +113,7 @@
             this.cbfem.TabIndex = 75;
             this.cbfem.Text = "Femenino";
             this.cbfem.UseVisualStyleBackColor = true;
+            this.cbfem.CheckedChanged += new System.EventHandler(this.cbfem_CheckedChanged);
             // 
             // cbmasc
             // 
@@ -121,6 +124,7 @@
             this.cbmasc.TabIndex = 74;
             this.cbmasc.Text = "Masculino";
             this.cbmasc.UseVisualStyleBackColor = true;
+            this.cbmasc.CheckedChanged += new System.EventHandler(this.cbmasc_CheckedChanged);
             // 
             // lbsexo
             // 
@@ -332,7 +336,7 @@
             this.ClientSize = new System.Drawing.Size(1032, 463);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btcancel);
-            this.Controls.Add(this.btrealziar);
+            this.Controls.Add(this.btrealizar);
             this.Controls.Add(this.lbcel);
             this.Controls.Add(this.tbcel);
             this.Controls.Add(this.cbfem);
@@ -360,7 +364,7 @@
 
         #endregion
         private System.Windows.Forms.Button btcancel;
-        private System.Windows.Forms.Button btrealziar;
+        private System.Windows.Forms.Button btrealizar;
         private System.Windows.Forms.Label lbcel;
         private System.Windows.Forms.TextBox tbcel;
         private System.Windows.Forms.CheckBox cbfem;

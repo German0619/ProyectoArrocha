@@ -1,4 +1,5 @@
-﻿using ProyectoArrocha;
+﻿using MySql.Data.MySqlClient;
+using ProyectoArrocha;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,11 +20,11 @@ namespace ProyectoArrocha
         public Perfil(string Nombre, string Email)
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             lbnom.Text = Nombre;
             lbcorreo.Text = Email;
             Correo = Email;
         }
-
         private void btlout_Click(object sender, EventArgs e)
         {
             Login login = new Login();
@@ -37,7 +38,6 @@ namespace ProyectoArrocha
             editarCuenta.Show();
             this.Hide();
         }
-
         private void btcamb_Click(object sender, EventArgs e)
         {
             CambiarContraseña cambiarContraseña = new CambiarContraseña(Correo, lbnom.Text);
@@ -45,17 +45,37 @@ namespace ProyectoArrocha
             cambiarContraseña.Show();
             this.Hide();
         }
-
-        private void pbperf_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void pbcar_Click(object sender, EventArgs e)
         {
+            using (MySqlConnection conn = DataBase.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT IdUsuario FROM Usuarios WHERE Correo = @Correo";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Correo", Correo);
+                    object result = cmd.ExecuteScalar();
 
+                    if (result == null)
+                    {
+                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    int idUsuario = Convert.ToInt32(result);
+
+                    Carrito carrito = new Carrito(idUsuario, lbnom.Text);
+                    carrito.Owner = this;
+                    carrito.Show();
+                    this.Hide();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error al abrir el carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
-
         private void pblogo_Click(object sender, EventArgs e)
         {
             FormProductos frm = new FormProductos();

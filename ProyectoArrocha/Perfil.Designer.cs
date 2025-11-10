@@ -59,36 +59,39 @@
             // 
             // btcamb
             // 
-            this.btcamb.Location = new System.Drawing.Point(451, 381);
+            this.btcamb.Location = new System.Drawing.Point(546, 349);
             this.btcamb.Name = "btcamb";
             this.btcamb.Size = new System.Drawing.Size(152, 32);
             this.btcamb.TabIndex = 30;
             this.btcamb.Text = "Cambiar contraseña";
             this.btcamb.UseVisualStyleBackColor = true;
+            this.btcamb.Click += new System.EventHandler(this.btcamb_Click);
             // 
             // btedit
             // 
-            this.btedit.Location = new System.Drawing.Point(451, 343);
+            this.btedit.Location = new System.Drawing.Point(546, 311);
             this.btedit.Name = "btedit";
             this.btedit.Size = new System.Drawing.Size(152, 32);
             this.btedit.TabIndex = 27;
             this.btedit.Text = "Editar Cuenta";
             this.btedit.UseVisualStyleBackColor = true;
+            this.btedit.Click += new System.EventHandler(this.btedit_Click);
             // 
             // btlout
             // 
-            this.btlout.Location = new System.Drawing.Point(301, 343);
+            this.btlout.Location = new System.Drawing.Point(396, 311);
             this.btlout.Name = "btlout";
             this.btlout.Size = new System.Drawing.Size(75, 32);
             this.btlout.TabIndex = 26;
             this.btlout.Text = "Logout";
             this.btlout.UseVisualStyleBackColor = true;
+            this.btlout.Click += new System.EventHandler(this.btlout_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(323, 287);
+            this.label3.Location = new System.Drawing.Point(418, 255);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 25;
@@ -98,7 +101,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(324, 245);
+            this.label2.Location = new System.Drawing.Point(419, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 24;
@@ -107,7 +110,7 @@
             // lbcorreo
             // 
             this.lbcorreo.AutoSize = true;
-            this.lbcorreo.Location = new System.Drawing.Point(404, 290);
+            this.lbcorreo.Location = new System.Drawing.Point(499, 258);
             this.lbcorreo.Name = "lbcorreo";
             this.lbcorreo.Size = new System.Drawing.Size(0, 16);
             this.lbcorreo.TabIndex = 29;
@@ -115,7 +118,7 @@
             // lbnom
             // 
             this.lbnom.AutoSize = true;
-            this.lbnom.Location = new System.Drawing.Point(404, 245);
+            this.lbnom.Location = new System.Drawing.Point(499, 213);
             this.lbnom.Name = "lbnom";
             this.lbnom.Size = new System.Drawing.Size(0, 16);
             this.lbnom.TabIndex = 28;
@@ -127,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(354, 160);
+            this.label1.Location = new System.Drawing.Point(449, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 38);
             this.label1.TabIndex = 23;
@@ -173,7 +176,6 @@
             this.pbperf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbperf.TabIndex = 9;
             this.pbperf.TabStop = false;
-            this.pbperf.Click += new System.EventHandler(this.pbperf_Click);
             // 
             // lbperf
             // 

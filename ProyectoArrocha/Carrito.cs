@@ -116,6 +116,10 @@ namespace ProyectoArrocha
             }
 
             MessageBox.Show("Compra realizada con éxito.", "Pago exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (this.Owner != null)
+            {
+                this.Owner.Show();
+            }
             this.Close();
         }
 

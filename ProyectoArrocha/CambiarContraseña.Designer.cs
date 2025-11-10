@@ -66,6 +66,7 @@
             this.btcancel.TabIndex = 45;
             this.btcancel.Text = "Cancelar";
             this.btcancel.UseVisualStyleBackColor = true;
+            this.btcancel.Click += new System.EventHandler(this.btcancel_Click);
             // 
             // lbnueva
             // 
@@ -117,6 +118,7 @@
             this.btcambiar.TabIndex = 44;
             this.btcambiar.Text = "Realizar cambio";
             this.btcambiar.UseVisualStyleBackColor = true;
+            this.btcambiar.Click += new System.EventHandler(this.btcambiar_Click);
             // 
             // lbconf
             // 

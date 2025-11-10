@@ -77,6 +77,7 @@
             this.btvolver.TabIndex = 65;
             this.btvolver.Text = "Volver a login";
             this.btvolver.UseVisualStyleBackColor = true;
+            this.btvolver.Click += new System.EventHandler(this.btvolver_Click);
             // 
             // btreg
             // 
@@ -86,6 +87,7 @@
             this.btreg.TabIndex = 64;
             this.btreg.Text = "Registrarse";
             this.btreg.UseVisualStyleBackColor = true;
+            this.btreg.Click += new System.EventHandler(this.btreg_Click);
             // 
             // lbcel
             // 

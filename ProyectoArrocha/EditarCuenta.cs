@@ -66,7 +66,7 @@ namespace ProyectoArrocha
             }
         }
 
-        private void btrealziar_Click(object sender, EventArgs e)
+        private void btrealizar_Click(object sender, EventArgs e)
         {
             string nuevoNombre = tbnombre.Text;
             string nuevoCelular = tbcel.Text;
@@ -130,12 +130,11 @@ namespace ProyectoArrocha
 
         private void cbfem_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbfem.Checked)
-            {
-                cbmasc.Checked = false;
-            }
+            if (cbfem.Checked) 
+                {
+                    cbmasc.Checked = false;
+                }
         }
-
         private void btcancel_Click(object sender, EventArgs e)
         {
             if (this.Owner != null)

@@ -12,7 +12,6 @@ namespace ProyectoArrocha
     public class DataBase
     {
         private static string connectionString = "server=Localhost;Database=proyecto_ds4;Uid=root;Pwd=;";
-
         public static MySqlConnection GetConnection()
         {
             MySqlConnection conn = new MySqlConnection(connectionString);

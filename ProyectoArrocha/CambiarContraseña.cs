@@ -26,14 +26,6 @@ namespace ProyectoArrocha
             this.FormClosed += CambiarContraseña_FormClosed;
         }
 
-        private void CambiarContraseña_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (this.Owner != null)
-            {
-                this.Owner.Show();
-            }
-        }
-
         private void btcambiar_Click(object sender, EventArgs e)
         {
             string actual = tbactual.Text;
@@ -93,6 +85,13 @@ namespace ProyectoArrocha
             }
         }
 
+        private void CambiarContraseña_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Owner.Show();
+            }
+        }
         private void btcancel_Click(object sender, EventArgs e)
         {
             if (this.Owner != null)
@@ -101,12 +100,6 @@ namespace ProyectoArrocha
             }
             this.Close();
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pblogo_Click(object sender, EventArgs e)
         {
             FormProductos frm = new FormProductos();

@@ -66,6 +66,7 @@
             this.lbreg.Size = new System.Drawing.Size(77, 16);
             this.lbreg.TabIndex = 24;
             this.lbreg.Text = "Registrarse";
+            this.lbreg.Click += new System.EventHandler(this.lbreg_Click);
             // 
             // lbolv
             // 
@@ -287,7 +288,6 @@
             this.Controls.Add(this.lbing);
             this.Name = "Login";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).EndInit();

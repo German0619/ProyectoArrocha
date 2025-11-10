@@ -21,6 +21,7 @@ namespace ProyectoArrocha
         {
             InitializeComponent();
         }
+
         private void btreg_Click(object sender, EventArgs e)
         {
             string Nombre = tbnombre.Text;
@@ -108,15 +109,13 @@ namespace ProyectoArrocha
                     MessageBox.Show("Error al registrar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
+        }   
         private void btvolver_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.Show();
             this.Hide();
         }
-
         private void dtp1_ValueChanged(object sender, EventArgs e)
         {
 
