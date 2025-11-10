@@ -24,5 +24,10 @@ namespace ProyectoArrocha
             lblPrecio.Text = "$" + precio.ToString("F2");
             pictureBox1.Image = imagen;
         }
+
+        private void ProductoCard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

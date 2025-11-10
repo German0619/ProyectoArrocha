@@ -60,5 +60,10 @@ namespace Proyecto_ds4
             registro.Show();
             this.Hide();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

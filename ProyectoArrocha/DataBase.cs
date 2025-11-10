@@ -11,7 +11,7 @@ namespace Proyecto_ds4
 {
     public class DataBase
     {
-        private static string connectionString = "server=;Database=;Uid=;Pwd=;";
+        private static string connectionString = "server=Localhost;Database=proyecto_ds4;Uid=root;Pwd=;";
 
         public static MySqlConnection GetConnection()
         {
