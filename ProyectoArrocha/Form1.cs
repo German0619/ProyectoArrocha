@@ -15,6 +15,8 @@ namespace ProyectoArrocha
         public Form1()
         {
             InitializeComponent();
+            //hola mundo
+            //Comento esto para ver si funciona
         }
     }
 }
