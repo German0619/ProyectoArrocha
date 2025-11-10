@@ -190,5 +190,24 @@ namespace ProyectoArrocha
                 }
             }
         }
+
+        private void pbperf_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(lbnom.Text))
+            {
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
+                                "Inicio de sesión requerido",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+                return;
+            }
+            Perfil perfil = new Perfil(lbnom.Text, Correo);
+            perfil.Owner = this;
+            perfil.Show();
+            this.Hide();
+        }
     }
 }

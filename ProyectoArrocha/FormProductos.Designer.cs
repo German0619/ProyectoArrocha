@@ -100,6 +100,7 @@ namespace TuProyecto
             this.pbperf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbperf.TabIndex = 9;
             this.pbperf.TabStop = false;
+            this.pbperf.Click += new System.EventHandler(this.pbperf_Click);
             // 
             // lbperf
             // 

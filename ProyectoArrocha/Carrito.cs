@@ -11,6 +11,8 @@ namespace ProyectoArrocha
     {
         private int IdUsuario;
         private int IdCarrito;
+        private string Correo;
+        private string Nombre;
 
         public Carrito(int idUsuario, String Nombre)
         {
@@ -141,6 +143,25 @@ namespace ProyectoArrocha
         {
             FormProductos frm = new FormProductos();
             frm.Show();
+            this.Hide();
+        }
+
+        private void pbperf_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
+            {
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
+                                "Inicio de sesión requerido",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+                return;
+            }
+            Perfil perfil = new Perfil(Nombre, Correo);
+            perfil.Owner = this;
+            perfil.Show();
             this.Hide();
         }
     }

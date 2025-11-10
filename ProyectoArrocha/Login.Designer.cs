@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.lbreg = new System.Windows.Forms.Label();
-            this.lbolv = new System.Windows.Forms.Label();
             this.btis = new System.Windows.Forms.Button();
             this.lbcont = new System.Windows.Forms.Label();
             this.tbcont = new System.Windows.Forms.TextBox();
@@ -61,22 +60,12 @@
             // 
             this.lbreg.AutoSize = true;
             this.lbreg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbreg.Location = new System.Drawing.Point(520, 421);
+            this.lbreg.Location = new System.Drawing.Point(519, 397);
             this.lbreg.Name = "lbreg";
             this.lbreg.Size = new System.Drawing.Size(77, 16);
             this.lbreg.TabIndex = 24;
             this.lbreg.Text = "Registrarse";
             this.lbreg.Click += new System.EventHandler(this.lbreg_Click);
-            // 
-            // lbolv
-            // 
-            this.lbolv.AutoSize = true;
-            this.lbolv.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbolv.Location = new System.Drawing.Point(520, 392);
-            this.lbolv.Name = "lbolv";
-            this.lbolv.Size = new System.Drawing.Size(147, 16);
-            this.lbolv.TabIndex = 23;
-            this.lbolv.Text = "¿Olvidó su contraseña?";
             // 
             // btis
             // 
@@ -280,7 +269,6 @@
             this.ClientSize = new System.Drawing.Size(1032, 503);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbreg);
-            this.Controls.Add(this.lbolv);
             this.Controls.Add(this.btis);
             this.Controls.Add(this.lbcont);
             this.Controls.Add(this.tbcont);
@@ -305,7 +293,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbreg;
-        private System.Windows.Forms.Label lbolv;
         private System.Windows.Forms.Button btis;
         private System.Windows.Forms.Label lbcont;
         private System.Windows.Forms.TextBox tbcont;
