@@ -19,26 +19,48 @@ namespace TuProyecto
         {
             CargarProductos();
         }
+
         private void CargarProductos()
         {
             flowPanelProductos.Controls.Clear();
 
-            // EJEMPLO: si tu ProductoCard tiene método CargarDatos
+            try
+            {
+                using (SqlConnection conn = new SqlConnection("TU_CADENA_DE_CONEXION"))
+                {
+                    conn.Open();
 
-            ProductoCard card1 = new ProductoCard();
-            card1.CargarDatos("Ibuprofeno 400mg", 3.99m, null);
+                    string query = "SELECT Nombre, Precio, Imagen FROM Productos";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-            ProductoCard card2 = new ProductoCard();
-            card2.CargarDatos("Vitamina C 1000mg", 5.50m, null);
+                    while (reader.Read())
+                    {
+                        string nombre = reader["Nombre"].ToString();
+                        decimal precio = Convert.ToDecimal(reader["Precio"]);
 
-      
+                        // Convertir imagen byte[] a Image
+                        byte[] imgBytes = reader["Imagen"] as byte[];
+                        Image imagen = null;
 
-            flowPanelProductos.Controls.Add(card1);
-            flowPanelProductos.Controls.Add(card2);
+                        if (imgBytes != null && imgBytes.Length > 0)
+                        {
+                            MemoryStream ms = new MemoryStream(imgBytes);
+                            imagen = Image.FromStream(ms);
+                        }
+
+                        // Crear la tarjeta de producto
+                        ProductoCard card = new ProductoCard();
+                        card.CargarDatos(nombre, precio, imagen);
+
+                        flowPanelProductos.Controls.Add(card);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar productos: " + ex.Message);
+            }
         }
-
-
-
-
     }
 }
