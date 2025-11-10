@@ -181,6 +181,7 @@
             // 
             this.lbperf.AutoSize = true;
             this.lbperf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbperf.ForeColor = System.Drawing.Color.White;
             this.lbperf.Location = new System.Drawing.Point(868, 36);
             this.lbperf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbperf.Name = "lbperf";
@@ -227,6 +228,7 @@
             // 
             this.lbdeli.AutoSize = true;
             this.lbdeli.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdeli.ForeColor = System.Drawing.Color.White;
             this.lbdeli.Location = new System.Drawing.Point(659, 16);
             this.lbdeli.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbdeli.Name = "lbdeli";
@@ -249,6 +251,7 @@
             // 
             this.lblogo.AutoSize = true;
             this.lblogo.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblogo.ForeColor = System.Drawing.Color.White;
             this.lblogo.Location = new System.Drawing.Point(134, 30);
             this.lblogo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblogo.Name = "lblogo";
@@ -282,6 +285,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcarrito)).EndInit();

@@ -1,18 +1,16 @@
-﻿using System.Windows.Forms;
-
-namespace TuProyecto
+﻿namespace ProyectoArrocha
 {
-    partial class FormProductos
+    partial class SeccionProducto
     {
         /// <summary>
-        /// Variable del diseñador necesaria.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Limpiar los recursos que se estén usando.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,15 +20,15 @@ namespace TuProyecto
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de Windows Forms
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeccionProducto));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -41,8 +39,11 @@ namespace TuProyecto
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowPanelProductos = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -50,6 +51,8 @@ namespace TuProyecto
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.flowPanelProductos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,8 +67,8 @@ namespace TuProyecto
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtBuscar);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1018, 84);
             this.panel1.TabIndex = 7;
@@ -173,34 +176,70 @@ namespace TuProyecto
             this.label3.TabIndex = 3;
             this.label3.Text = "ARROCHA";
             // 
-            // txtBuscar
+            // textBox1
             // 
-            this.txtBuscar.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtBuscar.Location = new System.Drawing.Point(261, 33);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(294, 22);
-            this.txtBuscar.TabIndex = 0;
-            this.txtBuscar.Text = "¿Qué estás buscando?";
-            this.txtBuscar.TextChanged += new System.EventHandler(this.FormProductos_Load);
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox1.Location = new System.Drawing.Point(261, 33);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(294, 22);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "¿Qué estás buscando?";
             // 
             // flowPanelProductos
             // 
             this.flowPanelProductos.AutoScroll = true;
-            this.flowPanelProductos.Location = new System.Drawing.Point(10, 90);
+            this.flowPanelProductos.Controls.Add(this.lblNombre);
+            this.flowPanelProductos.Controls.Add(this.lblPrecio);
+            this.flowPanelProductos.Controls.Add(this.pbImagen);
+            this.flowPanelProductos.Location = new System.Drawing.Point(12, 92);
             this.flowPanelProductos.Name = "flowPanelProductos";
             this.flowPanelProductos.Size = new System.Drawing.Size(990, 400);
-            this.flowPanelProductos.TabIndex = 8;
+            this.flowPanelProductos.TabIndex = 9;
             // 
-            // FormProductos
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(3, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(70, 16);
+            this.lblNombre.TabIndex = 0;
+            this.lblNombre.Text = "lblNombre";
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecio.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblPrecio.Location = new System.Drawing.Point(80, 0);
+            this.lblPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(58, 20);
+            this.lblPrecio.TabIndex = 5;
+            this.lblPrecio.Text = "$15.35\r\n";
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.Image = ((System.Drawing.Image)(resources.GetObject("pbImagen.Image")));
+            this.pbImagen.Location = new System.Drawing.Point(146, 4);
+            this.pbImagen.Margin = new System.Windows.Forms.Padding(4);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(257, 343);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagen.TabIndex = 6;
+            this.pbImagen.TabStop = false;
+            this.pbImagen.Click += new System.EventHandler(this.pbImagen_Click);
+            // 
+            // SeccionProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 506);
-            this.Controls.Add(this.flowPanelProductos);
+            this.ClientSize = new System.Drawing.Size(1019, 500);
             this.Controls.Add(this.panel1);
-            this.Name = "FormProductos";
-            this.Text = "Form1";
+            this.Controls.Add(this.flowPanelProductos);
+            this.Name = "SeccionProducto";
+            this.Text = "SeccionProducto";
+            this.Load += new System.EventHandler(this.SeccionProducto_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -209,6 +248,9 @@ namespace TuProyecto
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.flowPanelProductos.ResumeLayout(false);
+            this.flowPanelProductos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,8 +267,10 @@ namespace TuProyecto
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.FlowLayoutPanel flowPanelProductos;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.PictureBox pbImagen;
     }
 }
-

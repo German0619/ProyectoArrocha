@@ -68,6 +68,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "ProductoCard";
             this.Size = new System.Drawing.Size(237, 365);
+            this.Load += new System.EventHandler(this.ProductoCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
