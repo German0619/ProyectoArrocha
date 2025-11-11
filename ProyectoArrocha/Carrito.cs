@@ -108,23 +108,11 @@ namespace ProyectoArrocha
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = DataBase.GetConnection())
-            {
-                conn.Open();
-                string query = "UPDATE Carritos SET Estado = 'Pagado' WHERE IdCarrito = @IdCarrito";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@IdCarrito", IdCarrito);
-                cmd.ExecuteNonQuery();
-            }
-
-            MessageBox.Show("Compra realizada con éxito.", "Pago exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (this.Owner != null)
-            {
-                this.Owner.Show();
-            }
-            this.Close();
+            MetodoPago metodoPago = new MetodoPago(IdUsuario, IdCarrito, lbperf.Text, Correo);
+            metodoPago.Owner = this;
+            metodoPago.Show();
+            this.Hide();
         }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Perfil perfil = new Perfil("Usuario", "correo@ejemplo.com");

@@ -132,6 +132,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MetodoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MetodoPago.Designer.cs">
+      <DependentUpon>MetodoPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Perfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetodoPago.resx">
+      <DependentUpon>MetodoPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Perfil.resx">
       <DependentUpon>Perfil.cs</DependentUpon>
