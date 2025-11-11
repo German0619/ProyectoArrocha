@@ -12,13 +12,12 @@ namespace ProyectoArrocha
     {
         private int IdUsuario;
         private int IdCarrito;
-        private string Correo;
+        public string Correo;
         private string Nombre;
 
         public Carrito(int idUsuario, string Nombre)
         {
             InitializeComponent();
-            lbperf.Text = Nombre.Split(' ')[0];
             IdUsuario = idUsuario;
             CargarCarrito();
 
