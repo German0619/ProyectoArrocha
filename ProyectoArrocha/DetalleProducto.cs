@@ -1,12 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using TuProyecto;
 
@@ -17,15 +12,35 @@ namespace ProyectoArrocha
         private string nombre;
         private decimal precio;
         private Image imagen;
-        public string Correo;
-        public string Nombre;
+
+        public string Correo { get; set; }
+        public string NombreUsuario { get; set; } // renombrado para evitar confusión
+
         public DetalleProducto(string nombre, decimal precio, Image imagen)
         {
             InitializeComponent();
-            lbperf.Text = Nombre.Split(' ')[0];
+
             this.nombre = nombre;
             this.precio = precio;
             this.imagen = imagen;
+
+            // Si ya tienes el nombre del usuario, lo asignas después de crear el form
+            if (!string.IsNullOrEmpty(NombreUsuario))
+            {
+                lbperf.Text = NombreUsuario.Split(' ')[0];
+            }
+        }
+
+        private void DetalleProducto_Load(object sender, EventArgs e)
+        {
+            lblNombre.Text = nombre;
+            lblPrecio.Text = "$" + precio.ToString("0.00");
+
+            if (imagen != null)
+            {
+                pbImagen.Image = imagen;
+                pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         private void pbcar_Click(object sender, EventArgs e)
@@ -42,43 +57,24 @@ namespace ProyectoArrocha
 
                     if (result == null)
                     {
-                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.",
+                                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
                     int idUsuario = Convert.ToInt32(result);
 
-                    Carrito carrito = new Carrito(idUsuario, Nombre);
+                    Carrito carrito = new Carrito(idUsuario, NombreUsuario);
                     carrito.Owner = this;
                     carrito.Show();
                     this.Hide();
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error al abrir el carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al abrir el carrito: " + ex.Message,
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void DetalleProducto_Load(object sender, EventArgs e)
-        {
-            lblNombre.Text = nombre;
-            lblPrecio.Text = "$" + precio.ToString("0.00");
-            if (imagen != null)
-            {
-                pbImagen.Image = imagen;
-                pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-        }
-
-        private void tbDescripcion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pblogo_Click(object sender, EventArgs e)
@@ -97,18 +93,23 @@ namespace ProyectoArrocha
 
         private void pbperf_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
+            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(NombreUsuario))
             {
-                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
+                                "Inicio de sesión requerido",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
                 Login login = new Login();
                 login.Show();
                 this.Hide();
                 return;
             }
-            Perfil perfil = new Perfil(Nombre, Correo);
+
+            Perfil perfil = new Perfil(NombreUsuario, Correo);
             perfil.Owner = this;
             perfil.Show();
             this.Hide();
         }
     }
-    }
+}

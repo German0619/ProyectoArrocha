@@ -240,7 +240,6 @@
             this.button1.TabIndex = 72;
             this.button1.Text = "Añadir al carrito";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
@@ -271,7 +270,6 @@
             this.tbDescripcion.Size = new System.Drawing.Size(441, 175);
             this.tbDescripcion.TabIndex = 74;
             this.tbDescripcion.Text = "La Crema Reparadora para el Contorno de ";
-            this.tbDescripcion.TextChanged += new System.EventHandler(this.tbDescripcion_TextChanged);
             // 
             // DetalleProducto
             // 
