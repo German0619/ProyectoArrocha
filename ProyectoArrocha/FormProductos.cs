@@ -13,6 +13,7 @@ namespace TuProyecto
         private List<ProductoCard> listaProductos = new List<ProductoCard>();
         private string Correo;
         private string Nombre;
+    
 
         public FormProductos(string nombreUsuario = "", string correoUsuario = "")
         {
@@ -43,14 +44,17 @@ namespace TuProyecto
                 {
                     conn.Open();
 
-                    string query = "SELECT Nombre, Precio, ImagenUrl FROM Productos";
+                    string query = "SELECT IdProducto, Nombre, Precio, ImagenUrl, Descripcion, Stock FROM Productos";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
+                        int idProducto = Convert.ToInt32(reader["IdProducto"]);
                         string nombre = reader["Nombre"].ToString();
                         decimal precio = Convert.ToDecimal(reader["Precio"]);
+                        string descripcion = reader["Descripcion"].ToString();
+                        int stock = Convert.ToInt32(reader["Stock"]);
 
                         // Leer la URL de la imagen
                         string imagenUrl = reader["ImagenUrl"] == DBNull.Value
@@ -81,8 +85,9 @@ namespace TuProyecto
                         }
 
                         // Crear la tarjeta de producto
+                        
                         ProductoCard card = new ProductoCard(this);
-                        card.CargarDatos(nombre, precio, imagen);
+                        card.CargarDatos(idProducto, nombre, precio, descripcion, stock, imagen);
 
                         listaProductos.Add(card);
                         flowPanelProductos.Controls.Add(card);

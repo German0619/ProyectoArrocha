@@ -45,8 +45,9 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.btnAgregarCarrito = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbCantidad = new System.Windows.Forms.TextBox();
             this.tbDescripcion = new System.Windows.Forms.TextBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbperf)).BeginInit();
@@ -244,7 +245,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tbCantidad);
+            this.groupBox2.Controls.Add(this.lblCantidad);
             this.groupBox2.Location = new System.Drawing.Point(436, 395);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -253,16 +254,6 @@
             this.groupBox2.TabIndex = 73;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cantidad";
-            // 
-            // tbCantidad
-            // 
-            this.tbCantidad.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tbCantidad.Location = new System.Drawing.Point(11, 28);
-            this.tbCantidad.Name = "tbCantidad";
-            this.tbCantidad.Size = new System.Drawing.Size(99, 22);
-            this.tbCantidad.TabIndex = 0;
-            this.tbCantidad.Text = "1";
-            this.tbCantidad.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // tbDescripcion
             // 
@@ -274,11 +265,31 @@
             this.tbDescripcion.Text = "La Crema Reparadora para el Contorno de ";
             this.tbDescripcion.TextChanged += new System.EventHandler(this.tbDescripcion_TextChanged);
             // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Location = new System.Drawing.Point(21, 33);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(14, 16);
+            this.lblCantidad.TabIndex = 0;
+            this.lblCantidad.Text = "1";
+            this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(837, 165);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(44, 16);
+            this.lblStock.TabIndex = 75;
+            this.lblStock.Text = "label1";
+            // 
             // DetalleProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 497);
+            this.Controls.Add(this.lblStock);
             this.Controls.Add(this.tbDescripcion);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAgregarCarrito);
@@ -323,7 +334,8 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnAgregarCarrito;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox tbCantidad;
         private System.Windows.Forms.TextBox tbDescripcion;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Label lblStock;
     }
 }

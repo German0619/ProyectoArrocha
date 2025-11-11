@@ -109,5 +109,10 @@ namespace ProyectoArrocha
                 }
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
