@@ -307,6 +307,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CambiarContraseña";
             this.Text = "CambiarContraseña";
+            this.Load += new System.EventHandler(this.CambiarContraseña_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).EndInit();

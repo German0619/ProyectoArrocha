@@ -154,5 +154,10 @@ namespace ProyectoArrocha
             perfil.Show();
             this.Hide();
         }
+
+        private void CambiarContraseña_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

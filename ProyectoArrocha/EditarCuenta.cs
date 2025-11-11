@@ -206,5 +206,10 @@ namespace ProyectoArrocha
             perfil.Show();
             this.Hide();
         }
+
+        private void EditarCuenta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

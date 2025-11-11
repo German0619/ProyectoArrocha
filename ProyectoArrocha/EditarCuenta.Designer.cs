@@ -351,6 +351,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditarCuenta";
             this.Text = "EditarCuenta";
+            this.Load += new System.EventHandler(this.EditarCuenta_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).EndInit();

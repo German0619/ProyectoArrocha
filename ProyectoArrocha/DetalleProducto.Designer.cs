@@ -43,9 +43,9 @@
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAgregarCarrito = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbCantidad = new System.Windows.Forms.TextBox();
             this.tbDescripcion = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).BeginInit();
@@ -228,23 +228,23 @@
             this.lblPrecio.TabIndex = 71;
             this.lblPrecio.Text = "$15.35\r\n";
             // 
-            // button1
+            // btnAgregarCarrito
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(606, 398);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(362, 62);
-            this.button1.TabIndex = 72;
-            this.button1.Text = "Añadir al carrito";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAgregarCarrito.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCarrito.ForeColor = System.Drawing.Color.Red;
+            this.btnAgregarCarrito.Location = new System.Drawing.Point(606, 398);
+            this.btnAgregarCarrito.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarCarrito.Name = "btnAgregarCarrito";
+            this.btnAgregarCarrito.Size = new System.Drawing.Size(362, 62);
+            this.btnAgregarCarrito.TabIndex = 72;
+            this.btnAgregarCarrito.Text = "Añadir al carrito";
+            this.btnAgregarCarrito.UseVisualStyleBackColor = false;
+            this.btnAgregarCarrito.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.tbCantidad);
             this.groupBox2.Location = new System.Drawing.Point(436, 395);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -254,14 +254,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cantidad";
             // 
-            // textBox2
+            // tbCantidad
             // 
-            this.textBox2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.textBox2.Location = new System.Drawing.Point(11, 28);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(99, 22);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.Text = "1";
+            this.tbCantidad.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tbCantidad.Location = new System.Drawing.Point(11, 28);
+            this.tbCantidad.Name = "tbCantidad";
+            this.tbCantidad.Size = new System.Drawing.Size(99, 22);
+            this.tbCantidad.TabIndex = 0;
+            this.tbCantidad.Text = "1";
+            this.tbCantidad.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // tbDescripcion
             // 
@@ -280,7 +281,7 @@
             this.ClientSize = new System.Drawing.Size(1009, 497);
             this.Controls.Add(this.tbDescripcion);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAgregarCarrito);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pbImagen);
@@ -320,9 +321,9 @@
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAgregarCarrito;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbCantidad;
         private System.Windows.Forms.TextBox tbDescripcion;
     }
 }

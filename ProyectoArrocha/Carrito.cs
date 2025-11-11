@@ -149,5 +149,10 @@ namespace ProyectoArrocha
             perfil.Show();
             this.Hide();
         }
+
+        private void Carrito_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -303,6 +303,7 @@
             this.Name = "Carrito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carrito de Compras";
+            this.Load += new System.EventHandler(this.Carrito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -19,6 +19,8 @@ namespace ProyectoArrocha
         private Image imagen;
         public string Correo;
         public string Nombre;
+        private int IdUsuario;
+        private int IdProducto;
         public DetalleProducto(string nombre, decimal precio, Image imagen)
         {
             InitializeComponent();
@@ -78,7 +80,80 @@ namespace ProyectoArrocha
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(tbCantidad.Text.Trim(), out int cantidad) || cantidad <= 0)
+            {
+                MessageBox.Show("Por favor, ingresa una cantidad válida (solo números enteros mayores a 0).",
+                                "Cantidad inválida",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                tbCantidad.Focus();
+                return;
+            }
 
+            using (MySqlConnection conn = DataBase.GetConnection())
+            {
+                conn.Open();
+
+                // Buscar carrito activo
+                string queryCarrito = "SELECT IdCarrito FROM Carritos WHERE IdUsuario = @IdUsuario AND Estado = 'Activo'";
+                MySqlCommand cmdCarrito = new MySqlCommand(queryCarrito, conn);
+                cmdCarrito.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+
+                object result = cmdCarrito.ExecuteScalar();
+                int idCarrito;
+
+                if (result == null)
+                {
+                    // Crear un nuevo carrito si no existe
+                    string crearCarrito = "INSERT INTO Carritos (IdUsuario, Estado) VALUES (@IdUsuario, 'Activo')";
+                    MySqlCommand cmdNuevo = new MySqlCommand(crearCarrito, conn);
+                    cmdNuevo.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                    cmdNuevo.ExecuteNonQuery();
+
+                    idCarrito = (int)cmdNuevo.LastInsertedId;
+                }
+                else
+                {
+                    idCarrito = Convert.ToInt32(result);
+                }
+
+                // Verificar si el producto ya está en el carrito
+                string checkExist = @"SELECT COUNT(*) FROM DetallesCarrito 
+                              WHERE IdCarrito = @IdCarrito AND IdProducto = @IdProducto";
+                MySqlCommand cmdCheck = new MySqlCommand(checkExist, conn);
+                cmdCheck.Parameters.AddWithValue("@IdCarrito", idCarrito);
+                cmdCheck.Parameters.AddWithValue("@IdProducto", IdProducto);
+                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                if (existe > 0)
+                {
+                    // Si ya existe, actualizar cantidad
+                    string updateQty = @"UPDATE DetallesCarrito 
+                                 SET Cantidad = Cantidad + @Cantidad 
+                                 WHERE IdCarrito = @IdCarrito AND IdProducto = @IdProducto";
+                    MySqlCommand cmdUpdate = new MySqlCommand(updateQty, conn);
+                    cmdUpdate.Parameters.AddWithValue("@Cantidad", cantidad);
+                    cmdUpdate.Parameters.AddWithValue("@IdCarrito", idCarrito);
+                    cmdUpdate.Parameters.AddWithValue("@IdProducto", IdProducto);
+                    cmdUpdate.ExecuteNonQuery();
+                }
+                else
+                {
+                    // Si no existe, insertar nuevo producto
+                    string insertarDetalle = @"INSERT INTO DetallesCarrito (IdCarrito, IdProducto, Cantidad)
+                                       VALUES (@IdCarrito, @IdProducto, @Cantidad)";
+                    MySqlCommand cmdInsertar = new MySqlCommand(insertarDetalle, conn);
+                    cmdInsertar.Parameters.AddWithValue("@IdCarrito", idCarrito);
+                    cmdInsertar.Parameters.AddWithValue("@IdProducto", IdProducto);
+                    cmdInsertar.Parameters.AddWithValue("@Cantidad", cantidad);
+                    cmdInsertar.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Producto añadido al carrito correctamente ✅",
+                                "Éxito",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            }
         }
 
         private void pblogo_Click(object sender, EventArgs e)
@@ -109,6 +184,11 @@ namespace ProyectoArrocha
             perfil.Owner = this;
             perfil.Show();
             this.Hide();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
     }
