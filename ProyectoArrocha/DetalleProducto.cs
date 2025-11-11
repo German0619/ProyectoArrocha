@@ -11,10 +11,14 @@ namespace ProyectoArrocha
         private string nombre;
         private decimal precio;
         private Image imagen;
+        private string descripcion; // nuevo
+        private int stock; // nuevo
         public string Correo { get; set; }
         public string Nombre { get; set; }
         private int IdUsuario;
         private int IdProducto;
+
+        // Constructor original (compatibilidad)
         public DetalleProducto(string nombre, decimal precio, Image imagen)
         {
             InitializeComponent();
@@ -23,10 +27,29 @@ namespace ProyectoArrocha
             this.imagen = imagen;
         }
 
+        // Nueva sobrecarga que coincide con la llamada en ProductoCard
+        public DetalleProducto(int idProducto, string nombre, decimal precio, string descripcion, int stock, Image imagen)
+        {
+            InitializeComponent();
+            this.IdProducto = idProducto;
+            this.nombre = nombre;
+            this.precio = precio;
+            this.descripcion = descripcion;
+            this.stock = stock;
+            this.imagen = imagen;
+        }
+
         private void DetalleProducto_Load(object sender, EventArgs e)
         {
             lblNombre.Text = nombre;
             lblPrecio.Text = "$" + precio.ToString("0.00");
+
+            // Muestra la descripción si fue proporcionada
+            if (!string.IsNullOrEmpty(descripcion))
+            {
+                tbDescripcion.Text = descripcion;
+            }
+
             if (imagen != null)
             {
                 pbImagen.Image = imagen;

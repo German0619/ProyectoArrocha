@@ -40,19 +40,18 @@ namespace ProyectoArrocha
                 using (MySqlConnection conn = DataBase.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT Nombre, Precio, ImagenUrl FROM Productos";
+                    string query = "SELECT IdProducto, Nombre, Precio, Descripcion, Stock, ImagenUrl FROM Productos";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
+                        int id = Convert.ToInt32(reader["IdProducto"]);
                         string nombre = reader["Nombre"].ToString();
                         decimal precio = Convert.ToDecimal(reader["Precio"]);
-
-                        // Obtener la ruta guardada en la BD
-                        string imagenUrl = reader["ImagenUrl"] == DBNull.Value
-                            ? string.Empty
-                            : reader["ImagenUrl"].ToString();
+                        string descripcion = reader["Descripcion"] != DBNull.Value ? reader["Descripcion"].ToString() : string.Empty;
+                        int stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : 0;
+                        string imagenUrl = reader["ImagenUrl"] == DBNull.Value ? string.Empty : reader["ImagenUrl"].ToString();
 
                         Image imagen = null;
 
@@ -84,7 +83,7 @@ namespace ProyectoArrocha
 
                         // Crear la tarjeta visual
                         ProductoCard card = new ProductoCard(this);
-                        card.CargarDatos(nombre, precio, imagen);
+                        card.CargarDatos(id, nombre, precio, descripcion, stock, imagen);
                         card.Click += (s, e) => AbrirDetalleProducto(nombre, precio, imagen);
 
                         listaProductos.Add(card);

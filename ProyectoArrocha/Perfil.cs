@@ -19,9 +19,13 @@ namespace ProyectoArrocha
         public Perfil(string Nombre, string Email)
         {
             InitializeComponent();
-            lbnom.Text = Nombre;
-            lbcorreo.Text = Email;
+
+            lbnom.Text = Nombre ?? string.Empty;
+            lbcorreo.Text = Email ?? string.Empty;
             Correo = Email;
+
+            if (!string.IsNullOrEmpty(Nombre))
+                lbperf.Text = Nombre.Split(' ')[0];
         }
         private void btlout_Click(object sender, EventArgs e)
         {

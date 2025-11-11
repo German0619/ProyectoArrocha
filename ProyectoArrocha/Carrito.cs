@@ -19,6 +19,12 @@ namespace ProyectoArrocha
         {
             InitializeComponent();
             IdUsuario = idUsuario;
+            this.Nombre = Nombre; // <-- asignación añadida para propagar el nombre correctamente
+            // Propagar correo desde la sesión si está disponible
+            if (string.IsNullOrEmpty(this.Correo) && !string.IsNullOrEmpty(Session.Correo))
+            {
+                this.Correo = Session.Correo;
+            }
             CargarCarrito();
 
             dgvCarrito.CellClick += dgvCarrito_CellClick; 
@@ -189,7 +195,11 @@ namespace ProyectoArrocha
 
         private void pbperf_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
+            // Usa propiedades del formulario o, como fallback, los datos de Session
+            string correoUso = !string.IsNullOrEmpty(Correo) ? Correo : Session.Correo;
+            string nombreUso = !string.IsNullOrEmpty(Nombre) ? Nombre : Session.Nombre;
+
+            if (string.IsNullOrEmpty(correoUso) || string.IsNullOrEmpty(nombreUso))
             {
                 MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
                                 "Inicio de sesión requerido",
@@ -201,7 +211,7 @@ namespace ProyectoArrocha
                 return;
             }
 
-            Perfil perfil = new Perfil(Nombre, Correo);
+            Perfil perfil = new Perfil(nombreUso, correoUso);
             perfil.Owner = this;
             perfil.Show();
             this.Hide();
