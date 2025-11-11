@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TuProyecto;
 
 namespace ProyectoArrocha
 {
@@ -9,12 +10,13 @@ namespace ProyectoArrocha
         private string nombreProducto;
         private decimal precioProducto;
         private Image imagenProducto;
+        private FormProductos parentForm;
 
-        public ProductoCard()
+        public ProductoCard(FormProductos parent)
         {
             InitializeComponent();
             this.Click += ProductoCard_Click;
-
+            parentForm = parent;
             // Propagar el click a los controles internos
             foreach (Control ctrl in this.Controls)
             {
@@ -37,11 +39,11 @@ namespace ProyectoArrocha
             lblNombre.Text = nombre;
             lblPrecio.Text = "$" + precio.ToString("0.00");
             pictureBox1.Image = imagen;
-            ;
         }
 
         private void ProductoCard_Click(object sender, EventArgs e)
         {
+            parentForm.Hide();
             // Abre el formulario de detalles
             DetalleProducto detalles = new DetalleProducto(nombreProducto, precioProducto, imagenProducto);
             detalles.ShowDialog();  // o Show(), según prefieras

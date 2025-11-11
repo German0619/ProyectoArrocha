@@ -1,0 +1,123 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Data;
+using System.Windows.Forms;
+
+namespace ProyectoArrocha
+{
+    public partial class AdminProductos : Form
+    {
+        public AdminProductos()
+        {
+            InitializeComponent();
+            CargarProductos();
+        }
+
+        // Método para cargar todos los productos en el DataGridView
+        private void CargarProductos()
+        {
+            try
+            {
+                using (MySqlConnection conn = DataBase.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT IdProducto, Nombre, Descripcion, Precio, Stock, ImagenUrl FROM Productos";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar productos: " + ex.Message);
+            }
+        }
+
+        // Botón Agregar
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+                string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                string.IsNullOrWhiteSpace(txtStock.Text))
+            {
+                MessageBox.Show("Por favor completa todos los campos.");
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = DataBase.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO Productos 
+                             (Nombre, Descripcion, Precio, Stock, ImagenUrl, Activo) 
+                             VALUES (@Nombre, @Descripcion, @Precio, @Stock, @ImagenUrl, 1)";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("@Nombre", MySqlDbType.VarChar).Value = txtNombre.Text.Trim();
+                        cmd.Parameters.Add("@Descripcion", MySqlDbType.VarChar).Value = txtDescripcion.Text.Trim();
+                        cmd.Parameters.Add("@Precio", MySqlDbType.Decimal).Value = Convert.ToDecimal(txtPrecio.Text);
+                        cmd.Parameters.Add("@Stock", MySqlDbType.Int32).Value = Convert.ToInt32(txtStock.Text);
+                        cmd.Parameters.Add("@ImagenUrl", MySqlDbType.VarChar).Value = txtImagen.Text.Trim();
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Producto agregado correctamente ✅");
+                CargarProductos();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar producto: " + ex.Message);
+            }
+
+
+        }
+
+        // Botón Eliminar
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int idProducto = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["IdProducto"].Value);
+
+                try
+                {
+                    using (MySqlConnection conn = DataBase.GetConnection())
+                    {
+                        conn.Open();
+                        string query = "DELETE FROM Productos WHERE IdProducto = @IdProducto";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@IdProducto", idProducto);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Producto eliminado correctamente ❌");
+                    CargarProductos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar producto: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un producto para eliminar.");
+            }
+        }
+
+        // Método para limpiar los campos después de agregar
+        private void LimpiarCampos()
+        {
+            txtNombre.Clear();
+            txtDescripcion.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
+            txtImagen.Clear();
+        }
+    }
+}

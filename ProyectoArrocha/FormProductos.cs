@@ -81,7 +81,7 @@ namespace TuProyecto
                         }
 
                         // Crear la tarjeta de producto
-                        ProductoCard card = new ProductoCard();
+                        ProductoCard card = new ProductoCard(this);
                         card.CargarDatos(nombre, precio, imagen);
 
                         listaProductos.Add(card);
