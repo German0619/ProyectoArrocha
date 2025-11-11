@@ -24,7 +24,7 @@ namespace ProyectoArrocha
         public DetalleProducto(string nombre, decimal precio, Image imagen)
         {
             InitializeComponent();
-            lbperf.Text = Nombre.Split(' ')[0];
+            lbperf.Text = nombre.Split(' ')[0];
             this.nombre = nombre;
             this.precio = precio;
             this.imagen = imagen;
