@@ -127,7 +127,7 @@ namespace ProyectoArrocha
         private void Pblogo_Click(object sender, EventArgs e)
         {
             // Abre FormProductos; si hay sesión, se pasa para mostrar nombre/correo
-            FormProductos frm = new FormProductos(Session.Nombre, Session.Correo);
+            FormProductos frm = new FormProductos();
             frm.Owner = this;
             frm.Show();
             this.Hide();
@@ -136,7 +136,7 @@ namespace ProyectoArrocha
         // Handler para hacer click en la etiqueta del logo desde Login
         private void Lblogo_Click(object sender, EventArgs e)
         {
-            FormProductos frm = new FormProductos(Session.Nombre, Session.Correo);
+            FormProductos frm = new FormProductos();
             frm.Owner = this;
             frm.Show();
             this.Hide();
