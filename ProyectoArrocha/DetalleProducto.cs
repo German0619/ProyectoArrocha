@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using TuProyecto;
+using ProyectoArrocha;
 
 namespace ProyectoArrocha
 {
@@ -76,11 +76,13 @@ namespace ProyectoArrocha
                             MessageBox.Show("No se encontró el usuario en la base de datos. Inicie sesión nuevamente.", "Usuario no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
+
                         IdUsuario = Convert.ToInt32(resUser);
-                        Session.IdUsuario = IdUsuario;
-                        Session.Correo = correoUso;
+                        // ✅ Actualizamos la sesión correctamente
+                        Session.IniciarSesion(IdUsuario, Session.Nombre ?? "", correoUso);
                     }
                 }
+
 
                 if (IdProducto == 0)
                 {

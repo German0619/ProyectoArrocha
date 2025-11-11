@@ -1,14 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
-using ProyectoArrocha;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace TuProyecto
+namespace ProyectoArrocha
 {
-    public partial class FormProductos : Form
+    public partial class FormProductos : Form   // ✅ Debe ser partial
     {
         private List<ProductoCard> listaProductos = new List<ProductoCard>();
         private string Correo;
@@ -16,8 +15,7 @@ namespace TuProyecto
 
         public FormProductos(string nombreUsuario = "", string correoUsuario = "")
         {
-            InitializeComponent();
-
+            InitializeComponent();  // ✅ Ya funcionará
             Nombre = nombreUsuario;
             Correo = correoUsuario;
 
@@ -42,7 +40,6 @@ namespace TuProyecto
                 using (MySqlConnection conn = DataBase.GetConnection())
                 {
                     conn.Open();
-
                     string query = "SELECT Nombre, Precio, ImagenUrl FROM Productos";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
@@ -52,35 +49,27 @@ namespace TuProyecto
                         string nombre = reader["Nombre"].ToString();
                         decimal precio = Convert.ToDecimal(reader["Precio"]);
 
-                        // Leer la URL de la imagen
                         string imagenUrl = reader["ImagenUrl"] == DBNull.Value
                             ? string.Empty
                             : reader["ImagenUrl"].ToString();
 
                         Image imagen = null;
-
                         if (!string.IsNullOrEmpty(imagenUrl))
                         {
                             try
                             {
                                 if (File.Exists(imagenUrl))
                                 {
-                                    // Si es una ruta local en disco
                                     imagen = Image.FromFile(imagenUrl);
                                 }
                                 else if (imagenUrl.StartsWith("http"))
                                 {
-                                    // Si es una URL remota, puedes usar LoadAsync en el PictureBox
-                                    // Aquí lo dejamos en null y lo cargas directamente en ProductoCard
+                                    // URL remota: puedes usar LoadAsync si quieres
                                 }
                             }
-                            catch
-                            {
-                                // Ignora errores de carga de imagen
-                            }
+                            catch { }
                         }
 
-                        // Crear la tarjeta de producto
                         ProductoCard card = new ProductoCard(this);
                         card.CargarDatos(nombre, precio, imagen);
                         card.Click += (s, e) => AbrirDetalleProducto(nombre, precio, imagen);
@@ -107,8 +96,6 @@ namespace TuProyecto
             detalle.Show();
             this.Hide();
         }
-
-
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -143,7 +130,6 @@ namespace TuProyecto
                     }
 
                     int idUsuario = Convert.ToInt32(result);
-
                     Carrito carrito = new Carrito(idUsuario, Nombre);
                     carrito.Owner = this;
                     carrito.Show();
@@ -161,7 +147,6 @@ namespace TuProyecto
             if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
             {
                 MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 Login login = new Login();
                 login.Show();
                 this.Hide();

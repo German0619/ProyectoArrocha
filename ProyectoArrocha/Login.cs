@@ -1,15 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
-using ProyectoArrocha;
 using System;
 using System.Windows.Forms;
-using TuProyecto;
 
 namespace ProyectoArrocha
 {
     public partial class Login : Form
     {
-        private string Correo;
-        private string Nombre;
         public Login()
         {
             InitializeComponent();
@@ -37,11 +33,15 @@ namespace ProyectoArrocha
 
                 if (reader.Read())
                 {
-                    Session.IdUsuario = Convert.ToInt32(reader["IdUsuario"]);
-                    Session.Nombre = reader["Nombre"].ToString();
-                    Session.Correo = reader["Correo"].ToString();
+                    int idUsuario = Convert.ToInt32(reader["IdUsuario"]);
+                    string nombre = reader["Nombre"].ToString();
+                    string email = reader["Correo"].ToString();
 
-                    Perfil perfil = new Perfil(Session.Nombre, Session.Correo);
+                    // ✅ Iniciar sesión
+                    Session.IniciarSesion(idUsuario, nombre, email);
+
+                    // ✅ Ir al perfil
+                    Perfil perfil = new Perfil(nombre, email);
                     perfil.Show();
                     this.Hide();
                 }
@@ -58,22 +58,10 @@ namespace ProyectoArrocha
             registro.Show();
             this.Hide();
         }
-        private void pblogo_Click(object sender, EventArgs e)
-        {
-            FormProductos frm = new FormProductos();
-            frm.Show();
-            this.Hide();
-        }
-        private void lblogo_Click(object sender, EventArgs e)
-        {
-            FormProductos frm = new FormProductos();
-            frm.Show();
-            this.Hide();
-        }
 
         private void pbcar_Click(object sender, EventArgs e)
         {
-            if (!Session.IsLogged)
+            if (!Session.IsLoggedIn)
             {
                 MessageBox.Show("Por favor, inicie sesión para abrir el carrito.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Login login = new Login();

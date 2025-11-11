@@ -1,17 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Forms;
 
 namespace ProyectoArrocha
 {
     public static class Session
     {
-        public static int IdUsuario { get; set; } = 0;
-        public static string Correo { get; set; } = string.Empty;
-        public static string Nombre { get; set; } = string.Empty;
+        public static int IdUsuario { get; private set; }
+        public static string Nombre { get; private set; }
+        public static string Correo { get; private set; }
 
-        public static bool IsLogged => !string.IsNullOrEmpty(Correo);
+        public static bool IsLoggedIn => !string.IsNullOrEmpty(Correo);
+        public static void IniciarSesion(int idUsuario, string nombre, string correo)
+        {
+            IdUsuario = idUsuario;
+            Nombre = nombre;
+            Correo = correo;
+        }
+
+        public static void CerrarSesion()
+        {
+            IdUsuario = 0;
+            Nombre = null;
+            Correo = null;
+        }
     }
 }

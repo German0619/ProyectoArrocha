@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace TuProyecto
+namespace ProyectoArrocha
 {
     partial class FormProductos
     {
