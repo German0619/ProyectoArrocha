@@ -17,6 +17,7 @@ namespace TuProyecto
         public FormProductos()
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             this.Load += FormProductos_Load;
         }
 
@@ -119,10 +120,7 @@ namespace TuProyecto
         {
             if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
             {
-                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
-                                "Inicio de sesión requerido",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Login login = new Login();
                 login.Show();
                 this.Hide();

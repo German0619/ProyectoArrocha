@@ -138,10 +138,7 @@ namespace ProyectoArrocha
         {
             if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
             {
-                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
-                                "Inicio de sesión requerido",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Login login = new Login();
                 login.Show();
                 this.Hide();

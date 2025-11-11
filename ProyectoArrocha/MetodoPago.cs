@@ -14,6 +14,7 @@ namespace ProyectoArrocha
         public MetodoPago(int idUsuario, int idCarrito, string nombre, string correo)
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             IdUsuario = idUsuario;
             IdCarrito = idCarrito;
             Nombre = nombre;
@@ -58,7 +59,6 @@ namespace ProyectoArrocha
             {
                 conn.Open();
 
-                // Guardar/actualizar datos del usuario
                 string queryActualizar = @"UPDATE Usuarios SET Nombre = @Nombre, Direccion = @Direccion, MetodoPago = @MetodoPago WHERE IdUsuario = @IdUsuario";
                 MySqlCommand cmd = new MySqlCommand(queryActualizar, conn);
                 cmd.Parameters.AddWithValue("@Nombre", tbNombre.Text);
@@ -67,7 +67,6 @@ namespace ProyectoArrocha
                 cmd.Parameters.AddWithValue("@IdUsuario", IdUsuario);
                 cmd.ExecuteNonQuery();
 
-                // Cambiar el estado del carrito a Pagado
                 string queryCarrito = "UPDATE Carritos SET Estado = 'Pagado' WHERE IdCarrito = @IdCarrito";
                 MySqlCommand cmdCarrito = new MySqlCommand(queryCarrito, conn);
                 cmdCarrito.Parameters.AddWithValue("@IdCarrito", IdCarrito);
@@ -76,7 +75,6 @@ namespace ProyectoArrocha
 
             MessageBox.Show("Pago realizado con éxito.", "Transacción completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Volver al perfil
             Perfil perfil = new Perfil(Nombre, Correo);
             perfil.Show();
             this.Close();
@@ -85,6 +83,22 @@ namespace ProyectoArrocha
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pbperf_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
+            {
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+                return;
+            }
+            Perfil perfil = new Perfil(Nombre, Correo);
+            perfil.Owner = this;
+            perfil.Show();
+            this.Hide();
         }
     }
 }

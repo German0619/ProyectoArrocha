@@ -22,6 +22,7 @@ namespace ProyectoArrocha
         public DetalleProducto(string nombre, decimal precio, Image imagen)
         {
             InitializeComponent();
+            lbperf.Text = Nombre.Split(' ')[0];
             this.nombre = nombre;
             this.precio = precio;
             this.imagen = imagen;
@@ -98,10 +99,7 @@ namespace ProyectoArrocha
         {
             if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
             {
-                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
-                                "Inicio de sesión requerido",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Login login = new Login();
                 login.Show();
                 this.Hide();
