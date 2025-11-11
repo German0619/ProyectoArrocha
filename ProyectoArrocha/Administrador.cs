@@ -8,9 +8,31 @@ namespace ProyectoArrocha
 {
     public partial class AdminProductos : Form
     {
+        private string nombre;
+        private string correo;
+
         public AdminProductos(string nombre, string email)
         {
             InitializeComponent();
+
+            // Guardar datos de sesión/locales para usarlos en los handlers
+            this.nombre = nombre ?? string.Empty;
+            this.correo = email ?? string.Empty;
+
+            // Mostrar el nombre en la interfaz si existe el control lbnom
+            try
+            {
+                if (!string.IsNullOrEmpty(this.nombre) && this.Controls.ContainsKey("lbnom"))
+                {
+                    var lbl = this.Controls["lbnom"] as Label;
+                    if (lbl != null) lbl.Text = this.nombre;
+                }
+            }
+            catch
+            {
+                // Silenciar si el control no existe en tiempo de diseño.
+            }
+
             CargarProductos();
         }
 
@@ -77,8 +99,6 @@ namespace ProyectoArrocha
             {
                 MessageBox.Show("Error al agregar producto: " + ex.Message);
             }
-
-
         }
 
         // Botón Eliminar
@@ -94,9 +114,11 @@ namespace ProyectoArrocha
                     {
                         conn.Open();
                         string query = "DELETE FROM Productos WHERE IdProducto = @IdProducto";
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@IdProducto", idProducto);
-                        cmd.ExecuteNonQuery();
+                        using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                        {
+                            cmd.Parameters.Add("@IdProducto", MySqlDbType.Int32).Value = idProducto;
+                            cmd.ExecuteNonQuery();
+                        }
                     }
 
                     MessageBox.Show("Producto eliminado correctamente ❌");
@@ -122,5 +144,30 @@ namespace ProyectoArrocha
             txtStock.Clear();
             txtImagen.Clear();
         }
-    }
+
+        private void pbperf_Click(object sender, EventArgs e)
+        {
+            // Usamos los campos locales que inicializó el constructor
+            if (string.IsNullOrEmpty(this.correo) || string.IsNullOrEmpty(this.nombre))
+            {
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Abrir pantalla de login de forma modal para evitar múltiples instancias
+                using (var login = new Login())
+                {
+                    var dr = login.ShowDialog(this);
+                    // Si tras el login los datos de sesión se almacenan en una clase Session,
+                    // se podrían actualizar las variables locales desde ahí:
+                    // if (Session.IsLogged) { this.nombre = Session.Nombre; this.correo = Session.Correo; lbnom.Text = this.nombre; }
+                }
+                return;
+            }
+
+            // Abrir Perfil pasando nombre y correo
+            Perfil perfil = new Perfil(this.nombre, this.correo);
+            perfil.Owner = this;
+            perfil.Show();
+            this.Hide();
+        }
+    }    
 }
