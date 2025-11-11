@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ProyectoArrocha
 {
-    public partial class FormProductos : Form   // ✅ Debe ser partial
+    public partial class FormProductos : Form   
     {
         private List<ProductoCard> listaProductos = new List<ProductoCard>();
         private string Correo;
@@ -15,7 +15,7 @@ namespace ProyectoArrocha
 
         public FormProductos(string nombreUsuario = "", string correoUsuario = "")
         {
-            InitializeComponent();  // ✅ Ya funcionará
+            InitializeComponent();  
             Nombre = nombreUsuario;
             Correo = correoUsuario;
 
@@ -49,27 +49,40 @@ namespace ProyectoArrocha
                         string nombre = reader["Nombre"].ToString();
                         decimal precio = Convert.ToDecimal(reader["Precio"]);
 
+                        // Obtener la ruta guardada en la BD
                         string imagenUrl = reader["ImagenUrl"] == DBNull.Value
                             ? string.Empty
                             : reader["ImagenUrl"].ToString();
 
                         Image imagen = null;
+
                         if (!string.IsNullOrEmpty(imagenUrl))
                         {
                             try
                             {
-                                if (File.Exists(imagenUrl))
+                                // Si la ruta no es absoluta, combínala con el directorio base del proyecto
+                                string rutaAbsoluta = imagenUrl;
+                                if (!Path.IsPathRooted(imagenUrl))
                                 {
-                                    imagen = Image.FromFile(imagenUrl);
+                                    rutaAbsoluta = Path.Combine(
+                                        Application.StartupPath,
+                                        imagenUrl
+                                    );
                                 }
-                                else if (imagenUrl.StartsWith("http"))
+
+                                // Verificar si la imagen existe
+                                if (File.Exists(rutaAbsoluta))
                                 {
-                                    // URL remota: puedes usar LoadAsync si quieres
+                                    imagen = Image.FromFile(rutaAbsoluta);
                                 }
                             }
-                            catch { }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al cargar imagen: " + ex.Message);
+                            }
                         }
 
+                        // Crear la tarjeta visual
                         ProductoCard card = new ProductoCard(this);
                         card.CargarDatos(nombre, precio, imagen);
                         card.Click += (s, e) => AbrirDetalleProducto(nombre, precio, imagen);
@@ -84,6 +97,7 @@ namespace ProyectoArrocha
                 MessageBox.Show("Error al cargar productos: " + ex.Message);
             }
         }
+
 
         private void AbrirDetalleProducto(string nombre, decimal precio, Image imagen)
         {

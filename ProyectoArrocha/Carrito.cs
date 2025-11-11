@@ -44,7 +44,7 @@ namespace ProyectoArrocha
 
                 IdCarrito = Convert.ToInt32(result);
 
-                string query = @"SELECT dc.IdDetalle, p.ImagenUrl, p.Nombre AS Producto, p.Precio, dc.Cantidad, dc.Subtotal FROM DetallesCarrito dc INNER JOIN Productos p ON dc.IdProducto = p.IdProducto WHERE dc.IdCarrito = @IdCarrito";
+                string query = @"SELECT dc.IdDetalle, p.ImagenUrl, p.Nombre AS Producto, p.Precio, dc.Cantidad, (p.Precio * dc.Cantidad) AS Subtotal FROM DetallesCarrito dc INNER JOIN Productos p ON dc.IdProducto = p.IdProducto WHERE dc.IdCarrito = @IdCarrito";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 adapter.SelectCommand.Parameters.AddWithValue("@IdCarrito", IdCarrito);
                 DataTable table = new DataTable();
@@ -62,9 +62,12 @@ namespace ProyectoArrocha
                         {
                             row["Imagen"] = Image.FromFile(ruta);
                         }
-                        catch { row["Imagen"] = null; }
+                        catch 
+                        {
+                            row["Imagen"] = null; 
+                        }
                     }
-                }
+                }            
 
                 dgvCarrito.DataSource = table;
 
@@ -80,13 +83,19 @@ namespace ProyectoArrocha
 
         private void ConfigurarColumnas()
         {
-            dgvCarrito.RowTemplate.Height = 80;
+            dgvCarrito.RowTemplate.Height = 90;
             dgvCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCarrito.Columns["IdDetalle"].Visible = false;
             dgvCarrito.Columns["ImagenUrl"].Visible = false;
 
-            if (dgvCarrito.Columns["Imagen"] is DataGridViewImageColumn imgCol)
-                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvCarrito.Columns["Imagen"].DisplayIndex = 0;
+            dgvCarrito.Columns["Imagen"].HeaderText = "Producto";
+            ((DataGridViewImageColumn)dgvCarrito.Columns["Imagen"]).ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+            dgvCarrito.Columns["Producto"].HeaderText = "Nombre";
+            dgvCarrito.Columns["Precio"].HeaderText = "Precio ($)";
+            dgvCarrito.Columns["Cantidad"].HeaderText = "Cantidad";
+            dgvCarrito.Columns["Subtotal"].HeaderText = "Subtotal ($)";
 
             if (!dgvCarrito.Columns.Contains("Aumentar"))
             {
@@ -115,6 +124,7 @@ namespace ProyectoArrocha
             }
         }
 
+
         private void dgvCarrito_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -136,7 +146,7 @@ namespace ProyectoArrocha
             using (MySqlConnection conn = DataBase.GetConnection())
             {
                 conn.Open();
-                string query = "UPDATE DetallesCarrito SET Cantidad = GREATEST(Cantidad + @Cambio, 1) WHERE IdDetalle = @IdDetalle";
+                string query = @"UPDATE DetallesCarrito dc INNER JOIN Productos p ON dc.IdProducto = p.IdProducto SET dc.Cantidad = GREATEST(dc.Cantidad + @Cambio, 1), dc.Subtotal = p.Precio * GREATEST(dc.Cantidad + @Cambio, 1) WHERE dc.IdDetalle = @IdDetalle";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Cambio", cambio);
                 cmd.Parameters.AddWithValue("@IdDetalle", idDetalle);

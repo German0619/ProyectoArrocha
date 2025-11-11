@@ -19,7 +19,6 @@ namespace ProyectoArrocha
         public Perfil(string Nombre, string Email)
         {
             InitializeComponent();
-            lbperf.Text = Nombre.Split(' ')[0];
             lbnom.Text = Nombre;
             lbcorreo.Text = Email;
             Correo = Email;
