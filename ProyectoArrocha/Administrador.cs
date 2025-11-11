@@ -61,7 +61,9 @@ namespace ProyectoArrocha
                         cmd.Parameters.Add("@Descripcion", MySqlDbType.VarChar).Value = txtDescripcion.Text.Trim();
                         cmd.Parameters.Add("@Precio", MySqlDbType.Decimal).Value = Convert.ToDecimal(txtPrecio.Text);
                         cmd.Parameters.Add("@Stock", MySqlDbType.Int32).Value = Convert.ToInt32(txtStock.Text);
-                        cmd.Parameters.Add("@ImagenUrl", MySqlDbType.VarChar).Value = txtImagen.Text.Trim();
+                        string rutaCruda = txtImagen.Text.Trim();
+                        string rutaLimpia = rutaCruda.Replace("\"", "").Replace("\\", "/");
+                        cmd.Parameters.Add("@ImagenUrl", MySqlDbType.VarChar).Value = rutaLimpia;
 
                         cmd.ExecuteNonQuery();
                     }
