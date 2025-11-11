@@ -45,8 +45,8 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.btnAgregarCarrito = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbCantidad = new System.Windows.Forms.TextBox();
-            this.tbDescripcion = new System.Windows.Forms.TextBox();
+            this.lbcant = new System.Windows.Forms.Label();
+            this.lbdesc = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbcar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbperf)).BeginInit();
@@ -132,6 +132,7 @@
             this.pblogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pblogo.TabIndex = 7;
             this.pblogo.TabStop = false;
+            this.pblogo.Click += new System.EventHandler(this.pblogo_Click);
             // 
             // pbdeli
             // 
@@ -180,6 +181,7 @@
             this.lblogo.Size = new System.Drawing.Size(98, 27);
             this.lblogo.TabIndex = 3;
             this.lblogo.Text = "ARROCHA";
+            this.lblogo.Click += new System.EventHandler(this.lblogo_Click);
             // 
             // tbbusq
             // 
@@ -238,11 +240,11 @@
             this.btnAgregarCarrito.TabIndex = 72;
             this.btnAgregarCarrito.Text = "Añadir al carrito";
             this.btnAgregarCarrito.UseVisualStyleBackColor = false;
-            this.btnAgregarCarrito.Click += new System.EventHandler(this.button1_Click);
+            this.btnAgregarCarrito.Click += new System.EventHandler(this.btnAgregarCarrito_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tbCantidad);
+            this.groupBox2.Controls.Add(this.lbcant);
             this.groupBox2.Location = new System.Drawing.Point(436, 395);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -252,30 +254,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cantidad";
             // 
-            // tbCantidad
+            // lbcant
             // 
-            this.tbCantidad.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tbCantidad.Location = new System.Drawing.Point(11, 28);
-            this.tbCantidad.Name = "tbCantidad";
-            this.tbCantidad.Size = new System.Drawing.Size(99, 22);
-            this.tbCantidad.TabIndex = 0;
-            this.tbCantidad.Text = "1";
+            this.lbcant.AutoSize = true;
+            this.lbcant.Location = new System.Drawing.Point(7, 27);
+            this.lbcant.Name = "lbcant";
+            this.lbcant.Size = new System.Drawing.Size(50, 16);
+            this.lbcant.TabIndex = 75;
+            this.lbcant.Text = "prueba";
             // 
-            // tbDescripcion
+            // lbdesc
             // 
-            this.tbDescripcion.Location = new System.Drawing.Point(482, 200);
-            this.tbDescripcion.Multiline = true;
-            this.tbDescripcion.Name = "tbDescripcion";
-            this.tbDescripcion.Size = new System.Drawing.Size(441, 175);
-            this.tbDescripcion.TabIndex = 74;
-            this.tbDescripcion.Text = "La Crema Reparadora para el Contorno de ";
+            this.lbdesc.AutoSize = true;
+            this.lbdesc.Location = new System.Drawing.Point(482, 189);
+            this.lbdesc.Name = "lbdesc";
+            this.lbdesc.Size = new System.Drawing.Size(50, 16);
+            this.lbdesc.TabIndex = 74;
+            this.lbdesc.Text = "prueba";
             // 
             // DetalleProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 497);
-            this.Controls.Add(this.tbDescripcion);
+            this.Controls.Add(this.lbdesc);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAgregarCarrito);
             this.Controls.Add(this.lblPrecio);
@@ -319,7 +321,7 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnAgregarCarrito;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox tbCantidad;
-        private System.Windows.Forms.TextBox tbDescripcion;
+        private System.Windows.Forms.Label lbcant;
+        private System.Windows.Forms.Label lbdesc;
     }
 }

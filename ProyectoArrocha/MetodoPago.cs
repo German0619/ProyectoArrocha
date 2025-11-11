@@ -19,6 +19,10 @@ namespace ProyectoArrocha
             IdCarrito = idCarrito;
             Nombre = nombre;
             Correo = correo;
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                lbperf.Text = Nombre.Split(' ')[0];
+            }
             CargarDatosUsuario();
         }
 

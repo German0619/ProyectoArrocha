@@ -17,7 +17,7 @@ namespace ProyectoArrocha
         public ProductoCard(FormProductos parent)
         {
             InitializeComponent();
-            this.Click += ProductoCard_Click;
+            // Ya no suscribimos this.Click a ProductoCard_Click para evitar duplicados
             parentForm = parent;
             // Propagar el click a los controles internos
             foreach (Control ctrl in this.Controls)
@@ -44,19 +44,6 @@ namespace ProyectoArrocha
             lblNombre.Text = nombre;
             lblPrecio.Text = "$" + precio.ToString("0.00");
             pictureBox1.Image = imagen;
-        }
-
-        private void ProductoCard_Click(object sender, EventArgs e)
-        {
-            parentForm.Hide();
-            // Abre el formulario de detalles
-            DetalleProducto detalles = new DetalleProducto(idProducto, nombreProducto, precioProducto, descripcionProducto, stockProducto, imagenProducto);
-            detalles.ShowDialog();  // o Show(), según prefieras
-        }
-
-        private void ProductoCard_Load(object sender, EventArgs e)
-        {
-            // Aquí puedes inicializar algo si lo necesitas
         }
     }
 }

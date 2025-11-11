@@ -21,8 +21,11 @@ namespace ProyectoArrocha
         public EditarCuenta(string correo, String Nombre)
         {
             InitializeComponent();
-            lbperf.Text = Nombre.Split(' ')[0];
             CorreoUsuario = correo;
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                lbperf.Text = Nombre.Split(' ')[0];
+            }
             CargarDatosUsuario();
 
             this.FormClosed += EditarCuenta_FormClosed;

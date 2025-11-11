@@ -19,7 +19,9 @@ namespace ProyectoArrocha
             InitializeComponent();
 
             if (!string.IsNullOrEmpty(Nombre))
+            {
                 lbperf.Text = Nombre.Split(' ')[0];
+            }
 
             this.Load += FormProductos_Load;
         }

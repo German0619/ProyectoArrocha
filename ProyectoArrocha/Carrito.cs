@@ -19,8 +19,12 @@ namespace ProyectoArrocha
         {
             InitializeComponent();
             IdUsuario = idUsuario;
-            this.Nombre = Nombre; // <-- asignación añadida para propagar el nombre correctamente
-            // Propagar correo desde la sesión si está disponible
+            this.Nombre = Nombre;
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                lbperf.Text = Nombre.Split(' ')[0];
+            }
+
             if (string.IsNullOrEmpty(this.Correo) && !string.IsNullOrEmpty(Session.Correo))
             {
                 this.Correo = Session.Correo;
@@ -215,6 +219,6 @@ namespace ProyectoArrocha
             perfil.Owner = this;
             perfil.Show();
             this.Hide();
-        }
+        }                
     }
 }
