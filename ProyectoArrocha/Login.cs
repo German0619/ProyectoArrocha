@@ -25,10 +25,15 @@ namespace ProyectoArrocha
             using (MySqlConnection conn = DataBase.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT IdUsuario, Nombre, Correo FROM Usuarios WHERE Correo = @Correo AND Contrasena = @Contrasena";
+                string query = @"SELECT u.IdUsuario, u.Nombre, u.Correo, r.NombreRol
+                                 FROM Usuarios u
+                                 JOIN Roles r ON u.IdRol = r.IdRol
+                                 WHERE u.Correo = @Correo AND u.Contrasena = @Contrasena AND u.Activo = 1";
+
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Correo", correo);
                 cmd.Parameters.AddWithValue("@Contrasena", contrasena);
+
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -36,13 +41,23 @@ namespace ProyectoArrocha
                     int idUsuario = Convert.ToInt32(reader["IdUsuario"]);
                     string nombre = reader["Nombre"].ToString();
                     string email = reader["Correo"].ToString();
+                    string rol = reader["NombreRol"].ToString();
 
-                    // ✅ Iniciar sesión
+                    // Guardar sesión
                     Session.IniciarSesion(idUsuario, nombre, email);
 
-                    // ✅ Ir al perfil
-                    Perfil perfil = new Perfil(nombre, email);
-                    perfil.Show();
+                    // Abrir formulario según rol
+                    if (rol == "Admin")
+                    {
+                        AdminProductos adminForm = new AdminProductos(nombre, email);
+                        adminForm.Show();
+                    }
+                    else
+                    {
+                        Perfil perfil = new Perfil(nombre, email);
+                        perfil.Show();
+                    }
+
                     this.Hide();
                 }
                 else

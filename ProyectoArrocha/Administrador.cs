@@ -8,7 +8,7 @@ namespace ProyectoArrocha
 {
     public partial class AdminProductos : Form
     {
-        public AdminProductos()
+        public AdminProductos(string nombre, string email)
         {
             InitializeComponent();
             CargarProductos();
