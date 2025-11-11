@@ -130,7 +130,7 @@ namespace ProyectoArrocha
                     carrito.Correo = this.Correo;
 
                     carrito.Show();
-                    this.Close();
+                    this.Hide();
 
                 }
                 catch (Exception ex)
