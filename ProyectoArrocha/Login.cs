@@ -9,6 +9,9 @@ namespace ProyectoArrocha
         public Login()
         {
             InitializeComponent();
+
+            pblogo.Click += Pblogo_Click;
+            lblogo.Click += Lblogo_Click;
         }
 
         private void btis_Click(object sender, EventArgs e)
@@ -118,6 +121,25 @@ namespace ProyectoArrocha
         private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // Handler para hacer click en la imagen del logo desde Login
+        private void Pblogo_Click(object sender, EventArgs e)
+        {
+            // Abre FormProductos; si hay sesión, se pasa para mostrar nombre/correo
+            FormProductos frm = new FormProductos(Session.Nombre, Session.Correo);
+            frm.Owner = this;
+            frm.Show();
+            this.Hide();
+        }
+
+        // Handler para hacer click en la etiqueta del logo desde Login
+        private void Lblogo_Click(object sender, EventArgs e)
+        {
+            FormProductos frm = new FormProductos(Session.Nombre, Session.Correo);
+            frm.Owner = this;
+            frm.Show();
+            this.Hide();
         }
     }
 }
