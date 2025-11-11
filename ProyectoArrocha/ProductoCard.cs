@@ -11,7 +11,9 @@ namespace ProyectoArrocha
         private decimal precioProducto;
         private Image imagenProducto;
         private FormProductos parentForm;
-
+        private int idProducto;
+        private string descripcionProducto;
+        private int stockProducto;
         public ProductoCard(FormProductos parent)
         {
             InitializeComponent();
@@ -27,11 +29,14 @@ namespace ProyectoArrocha
         public string NombreProducto { get; set; }
 
         // Método público para asignar la info
-        public void CargarDatos(string nombre, decimal precio, Image imagen)
+        public void CargarDatos(int id, string nombre, decimal precio, string descripcion, int stock, Image imagen)
         {
             nombreProducto = nombre;
             precioProducto = precio;
             imagenProducto = imagen;
+            descripcionProducto = descripcion;
+            stockProducto = stock;
+            idProducto = id;
 
             // Asigna también la propiedad pública
             NombreProducto = nombre;
@@ -45,7 +50,7 @@ namespace ProyectoArrocha
         {
             parentForm.Hide();
             // Abre el formulario de detalles
-            DetalleProducto detalles = new DetalleProducto(nombreProducto, precioProducto, imagenProducto);
+            DetalleProducto detalles = new DetalleProducto(idProducto, nombreProducto, precioProducto, descripcionProducto, stockProducto, imagenProducto);
             detalles.ShowDialog();  // o Show(), según prefieras
         }
 

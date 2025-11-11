@@ -176,6 +176,11 @@ namespace ProyectoArrocha
                 }
             }
         }
+
+        private void Registro_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }
