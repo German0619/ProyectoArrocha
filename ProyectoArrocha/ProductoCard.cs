@@ -20,7 +20,7 @@ namespace ProyectoArrocha
             // Propagar el click a los controles internos
             foreach (Control ctrl in this.Controls)
             {
-                ctrl.Click += ProductoCard_Click;
+                ctrl.Click += (s, e) => this.OnClick(e);
             }
         }
 

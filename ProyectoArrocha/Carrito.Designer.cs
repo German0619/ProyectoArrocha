@@ -89,7 +89,6 @@
             this.dgvCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarrito.Size = new System.Drawing.Size(937, 320);
             this.dgvCarrito.TabIndex = 1;
-            this.dgvCarrito.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarrito_CellValueChanged);
             // 
             // lblTotal
             // 
@@ -225,7 +224,6 @@
             this.pblogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pblogo.TabIndex = 7;
             this.pblogo.TabStop = false;
-            this.pblogo.Click += new System.EventHandler(this.pblogo_Click);
             // 
             // pbdeli
             // 
@@ -274,7 +272,6 @@
             this.lblogo.Size = new System.Drawing.Size(98, 27);
             this.lblogo.TabIndex = 3;
             this.lblogo.Text = "ARROCHA";
-            this.lblogo.Click += new System.EventHandler(this.lblogo_Click);
             // 
             // tbbusq
             // 
@@ -303,7 +300,6 @@
             this.Name = "Carrito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carrito de Compras";
-            this.Load += new System.EventHandler(this.Carrito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

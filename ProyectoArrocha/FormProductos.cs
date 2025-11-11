@@ -83,6 +83,7 @@ namespace TuProyecto
                         // Crear la tarjeta de producto
                         ProductoCard card = new ProductoCard(this);
                         card.CargarDatos(nombre, precio, imagen);
+                        card.Click += (s, e) => AbrirDetalleProducto(nombre, precio, imagen);
 
                         listaProductos.Add(card);
                         flowPanelProductos.Controls.Add(card);
@@ -94,6 +95,19 @@ namespace TuProyecto
                 MessageBox.Show("Error al cargar productos: " + ex.Message);
             }
         }
+
+        private void AbrirDetalleProducto(string nombre, decimal precio, Image imagen)
+        {
+            DetalleProducto detalle = new DetalleProducto(nombre, precio, imagen)
+            {
+                Nombre = this.Nombre,
+                Correo = this.Correo
+            };
+            detalle.Owner = this;
+            detalle.Show();
+            this.Hide();
+        }
+
 
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -124,8 +138,7 @@ namespace TuProyecto
 
                     if (result == null)
                     {
-                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.",
-                                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No se encontró el usuario o no tiene carrito activo.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
@@ -138,8 +151,7 @@ namespace TuProyecto
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error al abrir el carrito: " + ex.Message,
-                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al abrir el carrito: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -148,10 +160,7 @@ namespace TuProyecto
         {
             if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
             {
-                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.",
-                                "Inicio de sesión requerido",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Login login = new Login();
                 login.Show();

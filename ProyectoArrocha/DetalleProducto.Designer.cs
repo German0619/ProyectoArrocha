@@ -132,7 +132,6 @@
             this.pblogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pblogo.TabIndex = 7;
             this.pblogo.TabStop = false;
-            this.pblogo.Click += new System.EventHandler(this.pblogo_Click);
             // 
             // pbdeli
             // 
@@ -181,7 +180,6 @@
             this.lblogo.Size = new System.Drawing.Size(98, 27);
             this.lblogo.TabIndex = 3;
             this.lblogo.Text = "ARROCHA";
-            this.lblogo.Click += new System.EventHandler(this.lblogo_Click);
             // 
             // tbbusq
             // 
@@ -262,7 +260,6 @@
             this.tbCantidad.Size = new System.Drawing.Size(99, 22);
             this.tbCantidad.TabIndex = 0;
             this.tbCantidad.Text = "1";
-            this.tbCantidad.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // tbDescripcion
             // 
@@ -272,7 +269,6 @@
             this.tbDescripcion.Size = new System.Drawing.Size(441, 175);
             this.tbDescripcion.TabIndex = 74;
             this.tbDescripcion.Text = "La Crema Reparadora para el Contorno de ";
-            this.tbDescripcion.TextChanged += new System.EventHandler(this.tbDescripcion_TextChanged);
             // 
             // DetalleProducto
             // 

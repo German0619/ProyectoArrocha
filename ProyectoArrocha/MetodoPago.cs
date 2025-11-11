@@ -14,7 +14,6 @@ namespace ProyectoArrocha
         public MetodoPago(int idUsuario, int idCarrito, string nombre, string correo)
         {
             InitializeComponent();
-            lbperf.Text = Nombre.Split(' ')[0];
             IdUsuario = idUsuario;
             IdCarrito = idCarrito;
             Nombre = nombre;

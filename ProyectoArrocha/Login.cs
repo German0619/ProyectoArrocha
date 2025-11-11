@@ -1,14 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ProyectoArrocha;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TuProyecto;
 
@@ -25,29 +17,31 @@ namespace ProyectoArrocha
 
         private void btis_Click(object sender, EventArgs e)
         {
-            string Correo = tbcorreo.Text;
-            string Contrasena = tbcont.Text;
+            string correo = tbcorreo.Text.Trim();
+            string contrasena = tbcont.Text;
 
-            if (Correo == "" || Contrasena == "")
+            if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contrasena))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             using (MySqlConnection conn = DataBase.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT Nombre, Correo FROM Usuarios WHERE Correo = @Correo AND Contrasena = @Contrasena";
+                string query = "SELECT IdUsuario, Nombre, Correo FROM Usuarios WHERE Correo = @Correo AND Contrasena = @Contrasena";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Correo", Correo);
-                cmd.Parameters.AddWithValue("@Contrasena", Contrasena);
+                cmd.Parameters.AddWithValue("@Correo", correo);
+                cmd.Parameters.AddWithValue("@Contrasena", contrasena);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    string Nombre = reader["Nombre"].ToString();
-                    string Email = reader["Correo"].ToString();
+                    Session.IdUsuario = Convert.ToInt32(reader["IdUsuario"]);
+                    Session.Nombre = reader["Nombre"].ToString();
+                    Session.Correo = reader["Correo"].ToString();
 
-                    Perfil perfil = new Perfil(Nombre, Email);
+                    Perfil perfil = new Perfil(Session.Nombre, Session.Correo);
                     perfil.Show();
                     this.Hide();
                 }
@@ -57,6 +51,7 @@ namespace ProyectoArrocha
                 }
             }
         }
+
         private void lbreg_Click(object sender, EventArgs e)
         {
             Registro registro = new Registro();
@@ -68,18 +63,25 @@ namespace ProyectoArrocha
             FormProductos frm = new FormProductos();
             frm.Show();
             this.Hide();
-
         }
         private void lblogo_Click(object sender, EventArgs e)
         {
             FormProductos frm = new FormProductos();
             frm.Show();
             this.Hide();
-
         }
 
         private void pbcar_Click(object sender, EventArgs e)
-        {           
+        {
+            if (!Session.IsLogged)
+            {
+                MessageBox.Show("Por favor, inicie sesión para abrir el carrito.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+                return;
+            }
+
             using (MySqlConnection conn = DataBase.GetConnection())
             {
                 try
@@ -87,7 +89,7 @@ namespace ProyectoArrocha
                     conn.Open();
                     string query = "SELECT IdUsuario FROM Usuarios WHERE Correo = @Correo";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Correo", Correo);
+                    cmd.Parameters.AddWithValue("@Correo", Session.Correo);
                     object result = cmd.ExecuteScalar();
 
                     if (result == null)
@@ -98,7 +100,7 @@ namespace ProyectoArrocha
 
                     int idUsuario = Convert.ToInt32(result);
 
-                    Carrito carrito = new Carrito(idUsuario, Nombre);
+                    Carrito carrito = new Carrito(idUsuario, Session.Nombre);
                     carrito.Owner = this;
                     carrito.Show();
                     this.Hide();
