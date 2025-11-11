@@ -188,7 +188,7 @@ namespace ProyectoArrocha
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            FormProductos frm = new FormProductos(Nombre, Correo);
+            FormProductos frm = new FormProductos();
             frm.Show();
             this.Close();
         }

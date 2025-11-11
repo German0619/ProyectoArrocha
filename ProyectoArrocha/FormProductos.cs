@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,17 +8,15 @@ using System.Windows.Forms;
 
 namespace ProyectoArrocha
 {
-    public partial class FormProductos : Form   
+    public partial class FormProductos : Form
     {
         private List<ProductoCard> listaProductos = new List<ProductoCard>();
-        private string Correo;
-        private string Nombre;
+        private string Correo => Session.Correo;
+        private string Nombre => Session.Nombre;
 
-        public FormProductos(string nombreUsuario = "", string correoUsuario = "")
+        public FormProductos()
         {
-            InitializeComponent();  
-            Nombre = nombreUsuario;
-            Correo = correoUsuario;
+            InitializeComponent();
 
             if (!string.IsNullOrEmpty(Nombre))
                 lbperf.Text = Nombre.Split(' ')[0];
@@ -40,54 +39,46 @@ namespace ProyectoArrocha
                 using (MySqlConnection conn = DataBase.GetConnection())
                 {
                     conn.Open();
+                    // Trae también Id, Descripcion y Stock
                     string query = "SELECT IdProducto, Nombre, Precio, Descripcion, Stock, ImagenUrl FROM Productos";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        int id = Convert.ToInt32(reader["IdProducto"]);
-                        string nombre = reader["Nombre"].ToString();
-                        decimal precio = Convert.ToDecimal(reader["Precio"]);
-                        string descripcion = reader["Descripcion"] != DBNull.Value ? reader["Descripcion"].ToString() : string.Empty;
-                        int stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : 0;
-                        string imagenUrl = reader["ImagenUrl"] == DBNull.Value ? string.Empty : reader["ImagenUrl"].ToString();
-
-                        Image imagen = null;
-
-                        if (!string.IsNullOrEmpty(imagenUrl))
+                        while (reader.Read())
                         {
-                            try
-                            {
-                                // Si la ruta no es absoluta, combínala con el directorio base del proyecto
-                                string rutaAbsoluta = imagenUrl;
-                                if (!Path.IsPathRooted(imagenUrl))
-                                {
-                                    rutaAbsoluta = Path.Combine(
-                                        Application.StartupPath,
-                                        imagenUrl
-                                    );
-                                }
+                            int id = reader["IdProducto"] != DBNull.Value ? Convert.ToInt32(reader["IdProducto"]) : 0;
+                            string nombre = reader["Nombre"].ToString();
+                            decimal precio = reader["Precio"] != DBNull.Value ? Convert.ToDecimal(reader["Precio"]) : 0m;
+                            string descripcion = reader["Descripcion"] == DBNull.Value ? string.Empty : reader["Descripcion"].ToString();
+                            int stock = reader["Stock"] != DBNull.Value ? Convert.ToInt32(reader["Stock"]) : 0;
+                            string imagenUrl = reader["ImagenUrl"] == DBNull.Value ? string.Empty : reader["ImagenUrl"].ToString();
 
-                                // Verificar si la imagen existe
-                                if (File.Exists(rutaAbsoluta))
+                            Image imagen = null;
+                            if (!string.IsNullOrEmpty(imagenUrl))
+                            {
+                                try
                                 {
-                                    imagen = Image.FromFile(rutaAbsoluta);
+                                    string rutaAbsoluta = imagenUrl;
+                                    if (!Path.IsPathRooted(imagenUrl))
+                                        rutaAbsoluta = Path.Combine(Application.StartupPath, imagenUrl);
+
+                                    if (File.Exists(rutaAbsoluta))
+                                        imagen = Image.FromFile(rutaAbsoluta);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error al cargar imagen: " + ex.Message);
                                 }
                             }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("Error al cargar imagen: " + ex.Message);
-                            }
+
+                            ProductoCard card = new ProductoCard(this);
+                            // Llamada con la firma correcta
+                            card.CargarDatos(id, nombre, precio, descripcion, stock, imagen);
+                            card.Click += (s, e) => AbrirDetalleProducto(id, nombre, precio, descripcion, stock, imagen);
+
+                            listaProductos.Add(card);
+                            flowPanelProductos.Controls.Add(card);
                         }
-
-                        // Crear la tarjeta visual
-                        ProductoCard card = new ProductoCard(this);
-                        card.CargarDatos(id, nombre, precio, descripcion, stock, imagen);
-                        card.Click += (s, e) => AbrirDetalleProducto(nombre, precio, imagen);
-
-                        listaProductos.Add(card);
-                        flowPanelProductos.Controls.Add(card);
                     }
                 }
             }
@@ -97,14 +88,14 @@ namespace ProyectoArrocha
             }
         }
 
-
-        private void AbrirDetalleProducto(string nombre, decimal precio, Image imagen)
+        private void AbrirDetalleProducto(int id, string nombre, decimal precio, string descripcion, int stock, Image imagen)
         {
-            DetalleProducto detalle = new DetalleProducto(nombre, precio, imagen)
+            DetalleProducto detalle = new DetalleProducto(id, nombre, precio, descripcion, stock, imagen)
             {
                 Nombre = this.Nombre,
                 Correo = this.Correo
             };
+
             detalle.Owner = this;
             detalle.Show();
             this.Hide();
@@ -126,6 +117,15 @@ namespace ProyectoArrocha
 
         private void pbcar_Click(object sender, EventArgs e)
         {
+            if (!Session.IsLoggedIn)
+            {
+                MessageBox.Show("Por favor, inicie sesión para abrir el carrito.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+                return;
+            }
+
             using (MySqlConnection conn = DataBase.GetConnection())
             {
                 try
@@ -157,7 +157,7 @@ namespace ProyectoArrocha
 
         private void pbperf_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Correo) || string.IsNullOrEmpty(Nombre))
+            if (!Session.IsLoggedIn)
             {
                 MessageBox.Show("Por favor, inicie sesión para acceder a su perfil.", "Inicio de sesión requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Login login = new Login();
