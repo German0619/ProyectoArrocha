@@ -191,7 +191,6 @@ namespace TuProyecto
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(294, 22);
             this.txtBuscar.TabIndex = 0;
-            this.txtBuscar.Text = "¿Qué estás buscando?";
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // FormProductos

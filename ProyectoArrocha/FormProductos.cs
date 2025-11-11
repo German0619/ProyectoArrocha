@@ -103,7 +103,7 @@ namespace TuProyecto
 
             foreach (var card in listaProductos)
             {
-                if (card.NombreProducto.ToLower().Contains(filtro))
+                if (card.NombreProducto.ToLower().StartsWith(filtro))
                 {
                     flowPanelProductos.Controls.Add(card);
                 }

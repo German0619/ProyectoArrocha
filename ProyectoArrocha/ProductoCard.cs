@@ -31,9 +31,13 @@ namespace ProyectoArrocha
             precioProducto = precio;
             imagenProducto = imagen;
 
+            // Asigna también la propiedad pública
+            NombreProducto = nombre;
+
             lblNombre.Text = nombre;
             lblPrecio.Text = "$" + precio.ToString("0.00");
             pictureBox1.Image = imagen;
+            ;
         }
 
         private void ProductoCard_Click(object sender, EventArgs e)
